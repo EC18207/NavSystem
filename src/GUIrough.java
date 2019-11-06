@@ -198,7 +198,8 @@ public class GUIrough {
 	BufferedImage mainmap = null;
 	boolean hasstarted = false;
 	JFrame current = null;
-	public  class MapMain {
+
+	public class MapMain {
 		Graphics g;
 		Graphics2D g2;
 		BufferedImage tomod;
@@ -211,21 +212,21 @@ public class GUIrough {
 
 		public BufferedImage drawpoints(Point in1, Point in2) {
 			g2.setColor(Color.GREEN);
-			g2.drawLine((int)in1.getX(),(int)in1.getY(), (int)in2.getX(),(int)in2.getY());
+			g2.drawLine((int) in1.getX(), (int) in1.getY(), (int) in2.getX(), (int) in2.getY());
 			g2.setColor(Color.RED);
-		
-			g2.fillOval((int)in2.getX(),(int)in2.getY(), 3, 3);
+
+			g2.fillOval((int) in2.getX(), (int) in2.getY(), 3, 3);
 			return this.tomod;
 
 		}
 
 	}
+
 	public void GUIroughres() {
-		if(this.hasstarted == true) {
+		if (this.hasstarted == true) {
 			this.current.dispose();
 			this.hasstarted = false;
-			
-			
+
 		}
 
 		JFrame todisplay = new JFrame("Navigation System");
@@ -235,18 +236,18 @@ public class GUIrough {
 		JPanel imagholder = new JPanel();
 		JLabel image = new JLabel();
 		ImageIcon map2draw = null;
-if(this.mainmap == null) {
-		BufferedImage mapfin = null;
+		if (this.mainmap == null) {
+			BufferedImage mapfin = null;
 
-		try {
-			mapfin = ImageIO.read(new File("Images\\rsz_1rsz_csse230MapImage.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				mapfin = ImageIO.read(new File("Images\\rsz_1rsz_csse230MapImage.png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-		// constructs bufferedimage, we then modify that and create an imageicon with
-		// it.
+			// constructs bufferedimage, we then modify that and create an imageicon with
+			// it.
 //		try {
 //		} catch (IOException e) {
 //			// TODO Auto-generated catch block
@@ -254,10 +255,8 @@ if(this.mainmap == null) {
 //		}
 //		Point2D.Double test1 = new Point2D.Double(57.00, 138.32);
 //		Point2D.Double test2 = new Point2D.Double(157.00, 25.00);
-		this.mainmap = mapfin;
-}
-
-	
+			this.mainmap = mapfin;
+		}
 
 //		mainmap.drawpoints(test1, test2);
 		if (mainmap != null) {
@@ -269,7 +268,7 @@ if(this.mainmap == null) {
 //		System.out.println(mapfin.getIconHeight());
 //		System.out.println(mapfin.getIconWidth());
 //		mainmap.drawpoints(new Point2D.Double(138.5, 40.0), new Point2D.Double(22.0, 243.3));
-		
+
 		image.setIcon(map2draw);
 		imagholder.add(image);
 		JPanel buttonholder = new JPanel();
@@ -325,6 +324,24 @@ if(this.mainmap == null) {
 		todisplay.add(xtrabuttons, BorderLayout.WEST);
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
 		todisplay.add(imagholder, BorderLayout.NORTH);
+		startlmfao.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				String toChoice = (String) to.getSelectedItem();
+				String fromChoice = (String) from.getSelectedItem();
+
+				FileReader reader = new FileReader();
+				ArrayList<Point> points = reader.getPoints();
+				if (points.contains(toChoice) && points.contains(fromChoice)) {
+					// aye
+				}
+
+			}
+
+		});
+		
 
 		startlmfao.addActionListener(new ActionListener() {
 
@@ -378,16 +395,13 @@ if(this.mainmap == null) {
 		todisplay.setVisible(true);
 
 	}
-
-
 	
 
 	public GUIrough() {
-		if(this.hasstarted == true) {
+		if (this.hasstarted == true) {
 			this.current.dispose();
 			this.hasstarted = false;
-			
-			
+
 		}
 
 		JFrame todisplay = new JFrame("Navigation System");
@@ -397,18 +411,18 @@ if(this.mainmap == null) {
 		JPanel imagholder = new JPanel();
 		JLabel image = new JLabel();
 		ImageIcon map2draw = null;
-if(this.mainmap == null) {
-		BufferedImage mapfin = null;
+		if (this.mainmap == null) {
+			BufferedImage mapfin = null;
 
-		try {
-			mapfin = ImageIO.read(new File("Images\\rsz_1rsz_csse230MapImage.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				mapfin = ImageIO.read(new File("Images\\rsz_1rsz_csse230MapImage.png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-		// constructs bufferedimage, we then modify that and create an imageicon with
-		// it.
+			// constructs bufferedimage, we then modify that and create an imageicon with
+			// it.
 //		try {
 //		} catch (IOException e) {
 //			// TODO Auto-generated catch block
@@ -416,10 +430,8 @@ if(this.mainmap == null) {
 //		}
 //		Point2D.Double test1 = new Point2D.Double(57.00, 138.32);
 //		Point2D.Double test2 = new Point2D.Double(157.00, 25.00);
-		this.mainmap = mapfin;
-}
-
-	
+			this.mainmap = mapfin;
+		}
 
 //		mainmap.drawpoints(test1, test2);
 		if (mainmap != null) {
@@ -431,7 +443,7 @@ if(this.mainmap == null) {
 //		System.out.println(mapfin.getIconHeight());
 //		System.out.println(mapfin.getIconWidth());
 //		mainmap.drawpoints(new Point2D.Double(138.5, 40.0), new Point2D.Double(22.0, 243.3));
-		
+
 		image.setIcon(map2draw);
 		imagholder.add(image);
 		JPanel buttonholder = new JPanel();
@@ -493,6 +505,10 @@ if(this.mainmap == null) {
 			//Fucking commit
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+
+
+
+
 				
 				String toChoiceStr = (String) to.getSelectedItem(); 
 				String fromChoiceStr = (String) from.getSelectedItem();
@@ -514,23 +530,23 @@ if(this.mainmap == null) {
 					if (points.get(i).getName().equals(toChoiceStr)) toChoice = points.get(i);
 					if (points.get(i).getName().equals(fromChoiceStr)) fromChoice = points.get(i);
 				}
+
 				
 				AStar algo = new AStar();
 				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
 				System.out.println(path);
 				
 			}
-			
+
 		});
-		
+
 		startbigboi.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
+
 			}
+
 			
 		});
 
@@ -539,24 +555,19 @@ if(this.mainmap == null) {
 		todisplay.setVisible(true);
 
 	}
-	
-	
-public  void update(ArrayList<Point> todo) {
-	if(this.hasstarted == false) {
+
+	public void update(ArrayList<Point> todo) {
+		if (this.hasstarted == false) {
+			this.GUIroughres();
+
+		}
+		for (int i = 0; i < todo.size() - 1; i++) {
+			this.mainmap = new MapMain(this.mainmap).drawpoints(todo.get(i), todo.get(i + 1));
+
+		}
+
 		this.GUIroughres();
-		
-		
-	}
-	for(int i = 0; i< todo.size()-1; i++) {
-		this.mainmap = new MapMain(this.mainmap).drawpoints(todo.get(i), todo.get(i+1));
 
-	}
-	
-	this.GUIroughres();
-	
-
-		
 	}
 
 }
-
