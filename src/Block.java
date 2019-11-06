@@ -12,7 +12,7 @@ public class Block {
 		this.x2 = x2;
 		this.y2 = y2;
 	}
-	
+	 
 	public int[] getBlock() {
 		int[] b = new int[4];
 		b[0] = x1;

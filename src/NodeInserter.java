@@ -20,7 +20,7 @@ public class NodeInserter {
 		return nodes;
 
 	}
-
+ 
 	public void insertNodes(ArrayList<Block> blocks, ArrayList<Point> points) {
 				
 		fillMap(blocks);

@@ -198,7 +198,7 @@ public class GUIrough {
 	BufferedImage mainmap = null;
 	boolean hasstarted = false;
 	JFrame current = null;
-
+ 
 	public class MapMain {
 		Graphics g;
 		Graphics2D g2;

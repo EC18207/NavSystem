@@ -12,7 +12,7 @@ public class FileReader {
 		this.blocks = new ArrayList<Block>();
 		this.points = new ArrayList<Point>();
 	}
-	
+	 
 	public void fileReadIn(File textFile) {
 			Scanner s = null;
 		try {
