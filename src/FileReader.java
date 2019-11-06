@@ -22,65 +22,112 @@ public class FileReader {
 			e.printStackTrace();
 		}
 		
-		int lineNumber = 1;
 		while(s.hasNext()) {
 			
 			String line = s.nextLine();
 			
 			if(line.charAt(0) == 'b') {
-				int x = 0;
-				int y = 0;
-				int x2 = 0;
-				int y2 = 0;
-				
-				int count = 0;
-				int i = 2;
-				String n = "";
-				
-				
-				while(count != 4 && i < line.length()) {
-					
-					if(line.charAt(i) == ',') {
-						count++;
-						
-						if(count == 1) {
-							x = Integer.parseInt(n);
-							n = "";
-							i++;
-						} else if (count == 2) {
-							y = Integer.parseInt(n);
-							n = "";
-							i++;
-						} else if (count == 3) {
-							x2 = Integer.parseInt(n);
-							n = "";
-							i++;
-						} else if (count == 4) {
-							y2 = Integer.parseInt(n);
-							break;
-						} else {
-							System.out.println("Ya fucked it");
-						}
-						
-					}
-					
-					n = n + line.charAt(i);
-					i++;
-					
-				}
-				
-				this.blocks.add(new Block(x,y,x2,y2));
+				makeBlock(line);
 			}
 			
+			if(line.charAt(0) == 'p') {
+				makePoint(line);
+			}
 			
 		}
 		
 	}
 	
+	public void makeBlock(String line) {
+		int x = 0;
+		int y = 0;
+		int x2 = 0;
+		int y2 = 0;
+		
+		int count = 0;
+		int i = 2;
+		String n = "";
+		
+		while(count != 4 && i < line.length()) {
+			
+			if(line.charAt(i) == ',') {
+				count++;
+				
+				if(count == 1) {
+					x = Integer.parseInt(n);
+					n = "";
+					i++;
+				} else if (count == 2) {
+					y = Integer.parseInt(n);
+					n = "";
+					i++;
+				} else if (count == 3) {
+					x2 = Integer.parseInt(n);
+					n = "";
+					i++;
+				} else if (count == 4) {
+					y2 = Integer.parseInt(n);
+					break;
+				} else {
+					System.out.println("Ya fucked it");
+				}
+				
+			} else {
+				n = n + line.charAt(i);
+				i++;
+			}
+			
+		}
+		
+		this.blocks.add(new Block(x,y,x2,y2));
+	}
 	
+	public void makePoint(String line) {
+		int x = 0;
+		int y = 0;
+		String name = "";
+		
+		int count = 0;
+		int i = 2;
+		String n = "";
+		
+		while(count != 3 && i < line.length()) {
+			
+			if(line.charAt(i) == ',') {
+				count++;
+				
+				if(count == 1) {
+					x = Integer.parseInt(n);
+					n = "";
+					i++;
+				} else if (count == 2) {
+					y = Integer.parseInt(n);
+					n = "";
+					i++;
+				} else if (count == 3) {
+					name = n;
+					break;
+				} else {
+					System.out.println("Ya fucked it");
+				}
+				
+			} else {
+				n = n + line.charAt(i);
+				i++;
+			}
+			
+		}
+		
+		this.points.add(new Point(x,y,name));
+		
+	}
 	
 	public ArrayList<Block> getBlocks() {
 		return this.blocks;
+	}
+	
+	public ArrayList<Point> getPoints() {
+		return this.points;
 	}
 	
 	
