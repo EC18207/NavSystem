@@ -29,10 +29,6 @@ return attachedPoints;
 public void addPt(Point p, int dist) {
 	attachedPoints.put(p, dist);
 	
-	//The following should work, but currently would mess up my test cases Main-Main9
-	//attachedPoints.put(p, dist);
-	//p.attachedPoints.put(this, dist);
-	
 }
 
 public String getName() {

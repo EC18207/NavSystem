@@ -9,7 +9,11 @@ public class NodeInserter {
 	
 	String fileDirectory = "MapBlock\\Coordinates.txt";
 	
-	public HashMap<String, Point> completeMap() {
+	public NodeInserter() {
+		completeMap();
+	}
+	
+	public void completeMap() {
 		FileReader r = new FileReader();
 		
 		File f = new File(fileDirectory);
@@ -18,9 +22,7 @@ public class NodeInserter {
 		
 		importantPoints = r.getPoints();
 		
-		insertNodes(r.getBlocks(), r.getPoints());
-		
-		return nodes;
+		insertNodes(r.getBlocks(), importantPoints);
 
 	}
  
@@ -38,17 +40,20 @@ public class NodeInserter {
 		int i = 0;
 		while(i < points.size()) {
 			Point temp = points.get(i);
+			int xval = (int) temp.x;
+			int yval = (int) temp.y;
+			String s = "X" + xval + "Y" + yval;
 			
-			String s = "X" + temp.x + "Y" + temp.y;
-			
-			Point nodeInMap = nodes.get(s);
+			System.out.println(s);
+			Point nodeInMap = nodes.get("X0Y0");
+			System.out.println("Node In Map: " + nodeInMap.getName());
 			if(nodeInMap != null) {
 				nodes.remove(s);
 				nodeInMap.setName(temp.getName());
 				nodes.put(temp.getName(), nodeInMap);
+				points.remove(temp);
+				points.add(nodeInMap);
 			}
-			
-			points.set(i, nodeInMap);
 			
 			i++;
 			
@@ -127,6 +132,7 @@ public class NodeInserter {
 				
 				if(!flag) {
 					String s = "X" + x + "Y" + y;
+					//System.out.println("Inserted: " + s + "  x: " + x + "  y: " + y);
 					nodes.put(s, new Point(x,y,s));
 				} else {
 					flag = false;

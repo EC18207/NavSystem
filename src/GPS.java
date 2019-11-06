@@ -8,8 +8,8 @@ public class GPS {
 	
 	public GPS() {
 		NodeInserter inserter = new NodeInserter();
-		map = inserter.completeMap();
 
+		map = inserter.getNodes();
 		points = inserter.getImportantPoints();
 	}
 	

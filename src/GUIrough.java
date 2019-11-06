@@ -522,9 +522,37 @@ public class GUIrough {
 				Point toChoice = null;
 				Point fromChoice = null;
 				
+				System.out.println("GPS Map Size: " + gps.getMap().size());
+				System.out.println("GPS Point Count: " + gps.getPoints().size());
+				
+				int j = 0;
+				while(j < gps.getPoints().size()) {
+					Point temp = gps.getMap().get(gps.getPoints().get(j).getName());
+					if(temp != null) {
+						System.out.println("Name: " + temp.getName() + "-" + temp.getX() + "-" + temp.getY());
+						
+						for(Point p : temp.getPoints().keySet()) {
+							System.out.println("    Attached: " + p.getName() + "-" + p.getX() + "-" + p.getY());
+						}
+					} else { System.out.println("It's null, retard."); }
+					j++;
+					
+				}
+				
+				
 				for (int i = 0; i < gps.getPoints().size(); i++) {
 					if (gps.getPoints().get(i).getName().equals(toChoiceStr)) toChoice = gps.getPoints().get(i);
 					if (gps.getPoints().get(i).getName().equals(fromChoiceStr)) fromChoice = gps.getPoints().get(i);
+				}
+				
+				if (fromChoice == null) {
+					System.out.println("From not found");
+					return;
+				}
+				
+				if (toChoice == null) {
+					System.out.println("From not found");
+					return;
 				}
 
 				
