@@ -1,8 +1,17 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileReader {
+	
+	ArrayList<Block> blocks;
+	ArrayList<Point> points;
+	
+	public FileReader() {
+		this.blocks = new ArrayList<Block>();
+		this.points = new ArrayList<Point>();
+	}
 	
 	public void fileReadIn(File textFile) {
 			Scanner s = null;
