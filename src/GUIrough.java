@@ -198,6 +198,7 @@ public class GUIrough {
 	BufferedImage mainmap = null;
 	boolean hasstarted = false;
 	JFrame current = null;
+	GPS gps = new GPS();
  
 	public class MapMain {
 		Graphics g;
@@ -504,13 +505,9 @@ public class GUIrough {
 
 		startlmfao.addActionListener(new ActionListener() {
 
-			//Fucking commit
+			//Fucking commit again
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-
-
-
-
 				
 				String toChoiceStr = (String) to.getSelectedItem(); 
 				String fromChoiceStr = (String) from.getSelectedItem();
@@ -522,8 +519,7 @@ public class GUIrough {
 					
 				}
 				
-				FileReader reader = new FileReader();
-				ArrayList<Point> points = reader.getPoints();
+				
 				
 				Point toChoice = null;
 				Point fromChoice = null;
