@@ -7,6 +7,8 @@ public class GPS {
 	public GPS() {
 		NodeInserter inserter = new NodeInserter();
 		map = inserter.completeMap();
+		
+		GUIrough gui = new GUIrough();
 	}
 	
 }
