@@ -39,6 +39,10 @@ public String getName() {
 	return this.name;
 }
 
+public void setName(String n) {
+	this.name = n;
+}
+
 @Override
 public double getX() {
 return super.x;
