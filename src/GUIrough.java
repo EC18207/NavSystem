@@ -211,7 +211,8 @@ public class GUIrough {
 			g2.setColor(Color.GREEN);
 			g2.drawLine((int)in1.getX(),(int)in1.getY(), (int)in2.getX(),(int)in2.getY());
 			g2.setColor(Color.RED);
-			g2.drawOval((int)in2.getX(),(int)in2.getY(), 3, 3);
+		
+			g2.fillOval((int)in2.getX(),(int)in2.getY(), 3, 3);
 			return this.tomod;
 
 		}

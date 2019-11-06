@@ -7,6 +7,8 @@ public class Main {
 	
 	public static void main(String[] args) {
 		GUIrough todisp = new GUIrough();
+	
+		
 
 
 		Point in1 = new Point(0, 0);
