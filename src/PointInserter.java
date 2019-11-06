@@ -2,14 +2,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class NodeInserter {
+public class PointInserter {
 	
 	HashMap<String, Point> nodes = new HashMap<String, Point>();
 	ArrayList<Point> importantPoints;
 	
 	String fileDirectory = "MapBlock\\Coordinates.txt";
 	
-	public NodeInserter() {
+	public PointInserter() {
 		completeMap();
 	}
 	

@@ -7,7 +7,7 @@ public class GPS {
 	ArrayList<Point> points;
 	
 	public GPS() {
-		NodeInserter inserter = new NodeInserter();
+		PointInserter inserter = new PointInserter();
 
 		map = inserter.getNodes();
 		points = inserter.getImportantPoints();
