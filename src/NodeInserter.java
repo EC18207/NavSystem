@@ -8,7 +8,7 @@ public class NodeInserter {
 	
 	String fileDirectory = "MapBlock\\Coordinates.txt";
 	
-	public HashMap<String, Point> fillMap() {
+	public HashMap<String, Point> completeMap() {
 		FileReader r = new FileReader();
 		
 		File f = new File(fileDirectory);
