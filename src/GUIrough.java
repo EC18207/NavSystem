@@ -348,6 +348,51 @@ public class GUIrough {
 
 			}
 
+		startlmfao.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String toChoiceStr = (String) to.getSelectedItem(); 
+				String fromChoiceStr = (String) from.getSelectedItem();
+				
+				if (toChoiceStr.equals(fromChoiceStr)) {
+				
+					System.out.println("Incorrect Arguments");
+					return;
+					
+				}
+				
+				FileReader reader = new FileReader();
+				ArrayList<Point> points = reader.getPoints();
+				
+				Point toChoice = null;
+				Point fromChoice = null;
+				
+				for (int i = 0; i < points.size(); i++) {
+					if (points.get(i).getName().equals(toChoiceStr)) toChoice = points.get(i);
+					if (points.get(i).getName().equals(fromChoiceStr)) fromChoice = points.get(i);
+				}
+				
+				AStar algo = new AStar();
+				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
+				System.out.println(path);
+				
+			}
+			
+		});
+		
+		startbigboi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+			}
+			
+			
+			
 		});
 
 		todisplay.pack();
@@ -461,18 +506,42 @@ public class GUIrough {
 
 		startlmfao.addActionListener(new ActionListener() {
 
+			//Fucking commit
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+
 
 				String toChoice = (String) to.getSelectedItem();
 				String fromChoice = (String) from.getSelectedItem();
 
+
+				
+				String toChoiceStr = (String) to.getSelectedItem(); 
+				String fromChoiceStr = (String) from.getSelectedItem();
+				
+				if (toChoiceStr.equals(fromChoiceStr)) {
+				
+					System.out.println("Incorrect Arguments");
+					return;
+					
+				}
+				
 				FileReader reader = new FileReader();
 				ArrayList<Point> points = reader.getPoints();
-				if (points.contains(toChoice) && points.contains(fromChoice)) {
-					// aye
+				
+				Point toChoice = null;
+				Point fromChoice = null;
+				
+				for (int i = 0; i < points.size(); i++) {
+					if (points.get(i).getName().equals(toChoiceStr)) toChoice = points.get(i);
+					if (points.get(i).getName().equals(fromChoiceStr)) fromChoice = points.get(i);
 				}
 
+				
+				AStar algo = new AStar();
+				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
+				System.out.println(path);
+				
 			}
 
 		});
@@ -484,6 +553,7 @@ public class GUIrough {
 
 			}
 
+			
 		});
 
 		todisplay.pack();
