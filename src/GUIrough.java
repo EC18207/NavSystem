@@ -448,6 +448,7 @@ public class GUIrough {
 		imagholder.add(image);
 		JPanel buttonholder = new JPanel();
 		JPanel plannerheading = new JPanel();
+		
 		String[] choicesto = { "test1", "test2" };
 		String[] choicesfrom = { "test1", "test2" };
 		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
