@@ -1,0 +1,180 @@
+
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Point2D.Double;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.WritableRaster;
+import java.io.File;
+import java.io.IOException;
+import java.util.Hashtable;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class GUIrough {
+	BufferedImage mainmap = null;
+	boolean hasstarted = false;
+	JFrame current = null;
+	public  class MapMain {
+		Graphics g;
+		Graphics2D g2;
+		BufferedImage tomod;
+
+		public MapMain(BufferedImage map) {
+			this.tomod = map;
+			this.g = map.getGraphics();
+			this.g2 = (Graphics2D) g;
+		}
+
+		public BufferedImage drawpoints(Point2D in1, Point2D in2) {
+			g2.setColor(Color.GREEN);
+			g2.draw(new Line2D.Double(in1.getX(), in1.getY(), in2.getX(), in2.getY()));
+			return this.tomod;
+
+		}
+
+	}
+
+	
+
+	public  void GUIrough() {
+		if(this.hasstarted == true) {
+			this.current.dispose();
+			this.hasstarted = false;
+			
+			
+		}
+
+		JFrame todisplay = new JFrame("Navigation System");
+		this.current = todisplay;
+		todisplay.setSize(500, 250);
+		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JPanel imagholder = new JPanel();
+		JLabel image = new JLabel();
+		ImageIcon map2draw = null;
+if(this.mainmap == null) {
+		BufferedImage mapfin = null;
+
+		try {
+			mapfin = ImageIO.read(new File("C:\\Users\\kriscija\\Desktop\\rsz_map.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// constructs bufferedimage, we then modify that and create an imageicon with
+		// it.
+//		try {
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		Point2D.Double test1 = new Point2D.Double(57.00, 138.32);
+//		Point2D.Double test2 = new Point2D.Double(157.00, 25.00);
+		this.mainmap = mapfin;
+}
+
+	
+
+//		mainmap.drawpoints(test1, test2);
+		if (mainmap != null) {
+			map2draw = new ImageIcon((mainmap));
+			image.setIcon(map2draw);
+		}
+
+// Just Testing stuff
+//		System.out.println(mapfin.getIconHeight());
+//		System.out.println(mapfin.getIconWidth());
+//		mainmap.drawpoints(new Point2D.Double(138.5, 40.0), new Point2D.Double(22.0, 243.3));
+		
+		image.setIcon(map2draw);
+		imagholder.add(image);
+		JPanel buttonholder = new JPanel();
+		JPanel plannerheading = new JPanel();
+		String[] choicesto = { "test1", "test2" };
+		String[] choicesfrom = { "test1", "test2" };
+		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
+		JComboBox<String> planstart = new JComboBox<String>(plannerstart);
+		JComboBox<String> to = new JComboBox<String>(choicesto);
+		JComboBox<String> from = new JComboBox<String>(choicesfrom);
+		JTextField dd = new JTextField();
+		JTextField dt = new JTextField();
+		JButton startlmfao = new JButton("Start individual trip");
+		JButton startbigboi = new JButton("Start Planner");
+		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
+		JLabel dist = new JLabel("todisplaydistance");
+		JLabel time = new JLabel("todisplaytime");
+		JLabel desd = new JLabel("Desired Distance(in miles):");
+		JLabel dest = new JLabel("Desired Time(in minutes):");
+		JLabel dis = new JLabel("Distance(in miles)::");
+		JLabel tim = new JLabel("Time(in minutes):");
+		JLabel tol = new JLabel("To:");
+		JLabel froml = new JLabel("From:");
+		JLabel nulll1 = new JLabel("");
+		JLabel nulll2 = new JLabel("");
+		JLabel nulll3 = new JLabel("");
+		JLabel nulll4 = new JLabel("");
+		JLabel nulll5 = new JLabel("");
+		plannerheading.add(header);
+		JPanel xtrabuttons = new JPanel();
+		xtrabuttons.add(startlmfao);
+		xtrabuttons.add(startbigboi);
+		buttonholder.setLayout(new GridLayout(3, 7));
+		buttonholder.add(tol);
+		buttonholder.add(to);
+		buttonholder.add(dis);
+		buttonholder.add(dist);
+		buttonholder.add(nulll1);
+		buttonholder.add(planstart);
+		buttonholder.add(nulll2);
+		buttonholder.add(nulll3);
+		buttonholder.add(nulll4);
+		buttonholder.add(nulll5);
+		buttonholder.add(desd);
+		buttonholder.add(dd);
+		buttonholder.add(froml);
+		buttonholder.add(from);
+		buttonholder.add(tim);
+		buttonholder.add(time);
+		buttonholder.add(dest);
+		buttonholder.add(dt);
+		todisplay.add(plannerheading, BorderLayout.EAST);
+		todisplay.add(xtrabuttons, BorderLayout.WEST);
+		todisplay.add(buttonholder, BorderLayout.SOUTH);
+		todisplay.add(imagholder, BorderLayout.NORTH);
+
+
+		todisplay.pack();
+		this.hasstarted = true;
+		todisplay.setVisible(true);
+
+	}
+	
+public  void update(Point2D.Double in1, Point2D.Double in2) {
+	if(this.hasstarted == false) {
+		this.GUIrough();
+		
+		
+	}
+	
+	this.mainmap = new MapMain(this.mainmap).drawpoints(in1, in2);
+	this.GUIrough();
+	
+
+		
+	}
+
+}
