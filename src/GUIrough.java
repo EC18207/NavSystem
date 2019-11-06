@@ -341,12 +341,7 @@ public class GUIrough {
 			}
 
 		});
-		startbigboi.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-			}
+		
 
 		startlmfao.addActionListener(new ActionListener() {
 
@@ -400,6 +395,7 @@ public class GUIrough {
 		todisplay.setVisible(true);
 
 	}
+	
 
 	public GUIrough() {
 		if (this.hasstarted == true) {
@@ -511,8 +507,6 @@ public class GUIrough {
 			public void actionPerformed(ActionEvent arg0) {
 
 
-				String toChoice = (String) to.getSelectedItem();
-				String fromChoice = (String) from.getSelectedItem();
 
 
 				
