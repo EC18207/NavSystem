@@ -180,6 +180,7 @@ import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 import javax.imageio.ImageIO;
@@ -236,7 +237,7 @@ if(this.mainmap == null) {
 		BufferedImage mapfin = null;
 
 		try {
-			mapfin = ImageIO.read(new File("Images\\csse230MapImage.png"));
+			mapfin = ImageIO.read(new File("Images\\rsz_1rsz_csse230MapImage.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -330,12 +331,13 @@ if(this.mainmap == null) {
 
 	}
 	
-public  void update(Point2D.Double in1, Point2D.Double in2) {
+public  void update(ArrayList<Point> todo) {
 	if(this.hasstarted == false) {
 		this.GUIrough();
 		
 		
 	}
+	for(int i = 0; int<)
 	
 	this.mainmap = new MapMain(this.mainmap).drawpoints(in1, in2);
 	this.GUIrough();
