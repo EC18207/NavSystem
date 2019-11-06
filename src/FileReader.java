@@ -24,9 +24,15 @@ public class FileReader {
 		
 		int lineNumber = 1;
 		while(s.hasNext()) {
+			
 			String line = s.nextLine();
-			System.out.println("Line " + lineNumber + ": " + line);
-			lineNumber++;
+//			System.out.println("Line " + lineNumber + ": " + line);
+//			lineNumber++;
+			if(line.charAt(0) == 'b') {
+				
+			}
+			
+			
 		}
 		
 	}
