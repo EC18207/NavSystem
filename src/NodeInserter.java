@@ -1,12 +1,28 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class NodeInserter {
 	
 	HashMap<String, Point> nodes = new HashMap<String, Point>();
+	
+	String fileDirectory = "MapBlock\\Coordinates.txt";
+	
+	public HashMap<String, Point> fillMap() {
+		FileReader r = new FileReader();
+		
+		File f = new File(fileDirectory);
+		
+		r.fileReadIn(f);
+		
+		insertNodes(r.getBlocks(), r.getPoints());
+		
+		return nodes;
+
+	}
 
 	public void insertNodes(ArrayList<Block> blocks, ArrayList<Point> points) {
-		
+				
 		fillMap(blocks);
 		
 		connectMap();
