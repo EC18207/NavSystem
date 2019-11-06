@@ -522,23 +522,6 @@ public class GUIrough {
 				Point toChoice = null;
 				Point fromChoice = null;
 				
-				System.out.println("GPS Map Size: " + gps.getMap().size());
-				System.out.println("GPS Point Count: " + gps.getPoints().size());
-				
-				int j = 0;
-				while(j < gps.getPoints().size()) {
-					Point temp = gps.getMap().get(gps.getPoints().get(j).getName());
-					if(temp != null) {
-						System.out.println("Name: " + temp.getName() + "-" + temp.getX() + "-" + temp.getY());
-						
-						for(Point p : temp.getPoints().keySet()) {
-							System.out.println("    Attached: " + p.getName() + "-" + p.getX() + "-" + p.getY());
-						}
-					} else { System.out.println("It's null, retard."); }
-					j++;
-					
-				}
-				
 				
 				for (int i = 0; i < gps.getPoints().size(); i++) {
 					if (gps.getPoints().get(i).getName().equals(toChoiceStr)) toChoice = gps.getPoints().get(i);
@@ -558,7 +541,11 @@ public class GUIrough {
 				
 				AStar algo = new AStar();
 				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-				System.out.println(path);
+				System.out.println();
+				for(int i = 0; i < path.size()-1; i++) {
+					System.out.print(path.get(i).getName() + " --> ");
+				}
+				System.out.print(path.get(path.size()-1).getName());
 				
 			}
 

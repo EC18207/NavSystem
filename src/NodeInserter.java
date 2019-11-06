@@ -37,16 +37,13 @@ public class NodeInserter {
 	}
 	
 	public void placeImportantPoints(ArrayList<Point> points) {
-		int i = 0;
-		while(i < points.size()) {
-			Point temp = points.get(i);
+		for(int i = 0; i < points.size(); i++) {
+			Point temp = points.get(0);
 			int xval = (int) temp.x;
 			int yval = (int) temp.y;
 			String s = "X" + xval + "Y" + yval;
 			
-			System.out.println(s);
-			Point nodeInMap = nodes.get("X0Y0");
-			System.out.println("Node In Map: " + nodeInMap.getName());
+			Point nodeInMap = nodes.get(s);
 			if(nodeInMap != null) {
 				nodes.remove(s);
 				nodeInMap.setName(temp.getName());
@@ -54,9 +51,6 @@ public class NodeInserter {
 				points.remove(temp);
 				points.add(nodeInMap);
 			}
-			
-			i++;
-			
 		}
 	}
 	
@@ -132,7 +126,6 @@ public class NodeInserter {
 				
 				if(!flag) {
 					String s = "X" + x + "Y" + y;
-					//System.out.println("Inserted: " + s + "  x: " + x + "  y: " + y);
 					nodes.put(s, new Point(x,y,s));
 				} else {
 					flag = false;
@@ -143,6 +136,7 @@ public class NodeInserter {
 			x++;
 			
 		}
+		
 	}
 	
 	public HashMap<String, Point> getNodes() {

@@ -8,9 +8,7 @@ public class AStar {
 	}
 	
 	public ArrayList<Point> findShortestPath(Point from, Point to) {
-		System.out.println("From: " + from.getName());
-		System.out.println("To: " + to.getName());
-		System.out.println();
+		
 		ArrayList<String> open = new ArrayList<String>();
 		ArrayList<String> closed = new ArrayList<String>();
 		
@@ -30,12 +28,11 @@ public class AStar {
 		
 		while(true) {
 			if(flag == true) {
-				if((q.peek() == null) || (q.peek().g >= values.get(to.getName()).f)) {
+				if((q.peek() == null) || (q.peek().f >= values.get(to.getName()).f)) {
 					break;
 				}
 			}
 			Node current = q.poll();
-			//System.out.println("Current Node: " + current.point.getName());
 			boolean isDestination = current.point.getName().equals(to.getName());
 			if(isDestination) { flag = true; }
 			
@@ -72,11 +69,6 @@ public class AStar {
 			}
 			
 		}
-		
-		System.out.println("From: " + from.getName() + "     To: " + to.getName());
-		System.out.println("Open: " + open.toString());
-		System.out.println("Closed: " + closed.toString());
-		System.out.println("Node: " + to.getName() + "-" + values.get(to.getName()).g + "-" + values.get(to.getName()).f + "-" + values.get(to.getName()).prevNode.getName() + "   Final Priority Queue: " + q.toString());
 		
 		Point location = values.get(to.getName()).point;
 		
