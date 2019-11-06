@@ -8,6 +8,9 @@ public class AStar {
 	}
 	
 	public ArrayList<Point> findShortestPath(Point from, Point to) {
+		System.out.println("From: " + from.getName());
+		System.out.println("To: " + to.getName());
+		System.out.println();
 		ArrayList<String> open = new ArrayList<String>();
 		ArrayList<String> closed = new ArrayList<String>();
 		
@@ -32,6 +35,7 @@ public class AStar {
 				}
 			}
 			Node current = q.poll();
+			//System.out.println("Current Node: " + current.point.getName());
 			boolean isDestination = current.point.getName().equals(to.getName());
 			if(isDestination) { flag = true; }
 			
