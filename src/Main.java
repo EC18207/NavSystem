@@ -24,9 +24,7 @@ public class Main {
 //		test.add(in5);
 //		todisp.update(test); 
 		
-		GPS gps = new GPS();
-		gps.getMap();
-
+		GUIrough gui = new GUIrough();
 
 	}
 

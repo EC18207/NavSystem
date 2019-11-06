@@ -519,14 +519,12 @@ public class GUIrough {
 					
 				}
 				
-				
-				
 				Point toChoice = null;
 				Point fromChoice = null;
 				
-				for (int i = 0; i < points.size(); i++) {
-					if (points.get(i).getName().equals(toChoiceStr)) toChoice = points.get(i);
-					if (points.get(i).getName().equals(fromChoiceStr)) fromChoice = points.get(i);
+				for (int i = 0; i < gps.getPoints().size(); i++) {
+					if (gps.getPoints().get(i).getName().equals(toChoiceStr)) toChoice = gps.getPoints().get(i);
+					if (gps.getPoints().get(i).getName().equals(fromChoiceStr)) fromChoice = gps.getPoints().get(i);
 				}
 
 				
