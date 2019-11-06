@@ -11,4 +11,8 @@ public class GPS {
 		GUIrough gui = new GUIrough();
 	}
 	
+	public HashMap<String, Point> getMap() {
+		return map;
+	}
+	
 }
