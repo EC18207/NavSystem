@@ -172,6 +172,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Double;
@@ -440,6 +442,36 @@ if(this.mainmap == null) {
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
 		todisplay.add(imagholder, BorderLayout.NORTH);
 
+		startlmfao.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String toChoice = (String) to.getSelectedItem(); 
+				String fromChoice = (String) from.getSelectedItem();
+				
+				FileReader reader = new FileReader();
+				ArrayList<Point> points = reader.getPoints();
+				if (points.contains(toChoice) && points.contains(fromChoice)) {
+					// aye
+				}
+				
+			}
+			
+		});
+		
+		startbigboi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+			}
+			
+			
+			
+		});
 
 		todisplay.pack();
 		this.hasstarted = true;
