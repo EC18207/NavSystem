@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class NodeInserter {
 	
 	HashMap<String, Point> nodes = new HashMap<String, Point>();
+	ArrayList<Point> importantPoints;
 	
 	String fileDirectory = "MapBlock\\Coordinates.txt";
 	
@@ -14,6 +15,8 @@ public class NodeInserter {
 		File f = new File(fileDirectory);
 		
 		r.fileReadIn(f);
+		
+		importantPoints = r.getPoints();
 		
 		insertNodes(r.getBlocks(), r.getPoints());
 		
@@ -138,6 +141,10 @@ public class NodeInserter {
 	
 	public HashMap<String, Point> getNodes() {
 		return nodes;
+	}
+	
+	public ArrayList<Point> getImportantPoints() {
+		return importantPoints;
 	}
 	
 }
