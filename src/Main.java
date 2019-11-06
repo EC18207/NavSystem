@@ -8,6 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 		GUIrough todisp = new GUIrough();
 
+
 		Point in1 = new Point(0, 0);
 		Point in2 = new Point(todisp.mainmap.getWidth(), 136);
 		Point in3 = new Point(0,todisp.mainmap.getHeight());
@@ -20,6 +21,8 @@ public class Main {
 		test.add(in4);
 		test.add(in5);
 		todisp.update(test); 
+
+
 	}
 
 }
