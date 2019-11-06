@@ -442,6 +442,7 @@ public class GUIrough {
 // Just Testing stuff
 //		System.out.println(mapfin.getIconHeight());
 //		System.out.println(mapfin.getIconWidth());
+		//l
 //		mainmap.drawpoints(new Point2D.Double(138.5, 40.0), new Point2D.Double(22.0, 243.3));
 
 		image.setIcon(map2draw);
