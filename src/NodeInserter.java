@@ -9,4 +9,8 @@ public class NodeInserter {
 		//height: 531
 	}
 	
+	public HashMap<String, Point> getNodes() {
+		return nodes;
+	}
+	
 }
