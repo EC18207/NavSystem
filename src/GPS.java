@@ -10,12 +10,14 @@ public class GPS {
 		NodeInserter inserter = new NodeInserter();
 		map = inserter.completeMap();
 		points = inserter.getImportantPoints();
-		
-		GUIrough gui = new GUIrough();
 	}
 	
 	public HashMap<String, Point> getMap() {
 		return map;
 	} 
+	
+	public ArrayList<Point> getPoints() {
+		return points;
+	}
 	
 }
