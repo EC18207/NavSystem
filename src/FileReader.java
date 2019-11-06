@@ -37,6 +37,7 @@ public class FileReader {
 				int i = 2;
 				String n = "";
 				
+				
 				while(count != 4 && i < line.length()) {
 					
 					if(line.charAt(i) == ',') {
