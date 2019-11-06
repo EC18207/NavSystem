@@ -236,7 +236,7 @@ if(this.mainmap == null) {
 		BufferedImage mapfin = null;
 
 		try {
-			mapfin = ImageIO.read(new File("C:\\Users\\kriscija\\Desktop\\rsz_map.png"));
+			mapfin = ImageIO.read(new File("Images\\csse230MapImage.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
