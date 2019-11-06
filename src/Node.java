@@ -9,7 +9,7 @@ public class Node {
 	
 	public Node(Point physicalNode) {
 		this.point = physicalNode;
-	}
+	} 
 
 	public void setG(double calcedG) {
 		this.g = calcedG;

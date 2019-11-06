@@ -13,6 +13,6 @@ public class GPS {
 	
 	public HashMap<String, Point> getMap() {
 		return map;
-	}
+	} 
 	
 }

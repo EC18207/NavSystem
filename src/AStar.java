@@ -22,7 +22,7 @@ public class AStar {
 		
 		open.add(startNode.point.getName());
 		q.add(startNode);
-		
+		 
 		boolean flag = false;
 		
 		while(true) {

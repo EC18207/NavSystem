@@ -25,7 +25,7 @@ public class PriorityQueue extends ArrayList<Node> implements Serializable {
 			
 		}
 	}
-	
+	 
 	private void shiftdown(int index) {
 		int k = index;
 		int l = (2*k) + 1;

@@ -25,7 +25,7 @@ public class Main {
 //		todisp.update(test); 
 		
 		GPS gps = new GPS();
-		
+		gps.getMap();
 
 
 	}

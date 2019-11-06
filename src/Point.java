@@ -12,7 +12,7 @@ public Point(int x, int y) {
 super(x, y);
 pointOfInterest = false;
 }
-
+ 
 // Point constructor to create pointOfInterest
 public Point(int x, int y, String name) {
 super.x = x;
