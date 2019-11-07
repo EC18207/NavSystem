@@ -372,7 +372,12 @@ public class GUIrough {
 				
 				AStar algo = new AStar();
 				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-				System.out.println(path);
+				
+				for(int x = 0; x < path.size()-1; x++) {
+					System.out.println(path.get(x).getName() + " --> ");
+				}
+				System.out.println(path.get(path.size()-1).getName());
+				
 				
 			}
 			
@@ -547,11 +552,13 @@ public class GUIrough {
 				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
 				System.out.println();
 				
-				//if(path.size() != 0) { System.out.println("Successful Route Found!"); }
+				System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
+				if(path.size() != 0) { System.out.println("Successful Route Found!     Beginning: " + path.get(0).getName() + "  End: " + path.get(path.size()-1).getName()); }
+				//Print Path
 				for(int i = 0; i < path.size()-1; i++) {
-					System.out.print(path.get(i).getName() + " --> ");
+					System.out.println(path.get(i).getName() + " --> ");
 				}
-				System.out.print(path.get(path.size()-1).getName());
+				System.out.println(path.get(path.size()-1).getName());
 				
 			}
 

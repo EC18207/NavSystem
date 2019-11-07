@@ -50,8 +50,8 @@ public class AStar {
 				Node val = values.get(p.getName());
 				
 				double calcedG = current.point.getPoints().get(p).val + current.g;
-				double calcedF = calcedG + val.h;
-				if(calcedF < val.f) {
+				double calcedF = 10*(calcedG + val.h);
+				if(calcedF < val.f || val.f < 0) {
 					val.setG(calcedG);
 					val.calcF();
 					val.setPrevNode(current.point);

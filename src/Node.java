@@ -4,7 +4,7 @@ public class Node {
 	Point point = null;
 	double g = 0;
 	double h = -1;
-	double f = 999999999;
+	double f = -1;
 	Point prevNode = null;
 	
 	public Node(Point physicalNode) {
@@ -20,7 +20,7 @@ public class Node {
 		this.h = Math.sqrt((x*x)+(y*y));
 	}
 	public void calcF() {
-		this.f = this.g + this.h;
+		this.f = 10*(this.g + this.h);
 	}
 	public void setPrevNode(Point name) {
 		this.prevNode = name;
