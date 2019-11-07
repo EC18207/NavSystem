@@ -25,13 +25,14 @@ public class FileReader {
 		while(s.hasNext()) {
 			
 			String line = s.nextLine();
-			
-			if(line.charAt(0) == 'b') {
-				makeBlock(line);
-			}
-			
-			if(line.charAt(0) == 'p') {
-				makePoint(line);
+			if(line.length() != 0) {
+				if(line.charAt(0) == 'b') {
+					makeBlock(line);
+				}
+				
+				if(line.charAt(0) == 'p') {
+					makePoint(line);
+				}
 			}
 			
 		}
