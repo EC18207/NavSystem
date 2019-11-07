@@ -72,11 +72,19 @@ public class PointInserter {
 				String rightS = "X" + (x+1) + "Y" + (y);
 				String leftS = "X" + (x-1) + "Y" + (y);
 				String bottomS = "X" + (x) + "Y" + (y+1);
+				String topLeftS = "X" + (x-1) + "Y" + (y-1);
+				String topRightS = "X" + (x+1) + "Y" + (y-1);
+				String bottomLeftS = "X" + (x-1) + "Y" + (y+1);
+				String bottomRightS = "X" + (x+1) + "Y" + (y+1);
 				
 				Point top = nodes.get(topS);
 				Point right = nodes.get(rightS);
 				Point left = nodes.get(leftS);
 				Point bottom = nodes.get(bottomS);
+				Point topL = nodes.get(topLeftS);
+				Point topR = nodes.get(topRightS);
+				Point bottomL = nodes.get(bottomLeftS);
+				Point bottomR = nodes.get(bottomRightS);
 				
 				if(top != null) {
 					node.addPt(top, 1);
@@ -89,6 +97,18 @@ public class PointInserter {
 				}
 				if(bottom != null) {
 					node.addPt(bottom, 1);
+				}
+				if(topL != null) {
+					node.addPt(topL, 1);
+				}
+				if(topR != null) {
+					node.addPt(topR, 1);
+				}
+				if(bottomL != null) {
+					node.addPt(bottomL, 1);
+				}
+				if(bottomR != null) {
+					node.addPt(bottomR, 1);
 				}
 				
 			}
