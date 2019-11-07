@@ -55,8 +55,8 @@ public class PointInserter {
 	}
 	
 	public void connectMap() {
-		int w = 620;
-		int h = 531;
+		int w = 619;
+		int h = 530;
 		int x = 0;
 		int y = 0;
 		
@@ -123,10 +123,10 @@ public class PointInserter {
 	}
 	
 	public void fillMap(ArrayList<Block> blocks) {
-		//width: 620
-		//height: 531
-		int w = 620;
-		int h = 531;
+		//width: 619
+		//height: 530
+		int w = 619;
+		int h = 530;
 		int x = 0;
 		int y = 0;
 		boolean flag = false;
