@@ -49,7 +49,7 @@ public class AStar {
 				
 				Node val = values.get(p.getName());
 				
-				double calcedG = current.point.getPoints().get(p) + current.g;
+				double calcedG = current.point.getPoints().get(p).val + current.g;
 				double calcedF = calcedG + val.h;
 				if(calcedF < val.f) {
 					val.setG(calcedG);

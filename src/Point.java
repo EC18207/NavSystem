@@ -5,7 +5,7 @@ public class Point extends Point2D.Double {
 
 private boolean pointOfInterest;
 private String name;
-private HashMap<Point, Integer> attachedPoints = new HashMap<Point, Integer>();
+private HashMap<Point, DoubleVal> attachedPoints = new HashMap<Point, DoubleVal>();
 
 // Default point constructor for unimportant points
 public Point(int x, int y) {
@@ -22,12 +22,12 @@ this.pointOfInterest = true;
 }
 
 // Return the points attached to current point
-public HashMap<Point, Integer> getPoints() {
+public HashMap<Point, DoubleVal> getPoints() {
 return attachedPoints;
 }
 
-public void addPt(Point p, int dist) {
-	attachedPoints.put(p, dist);
+public void addPt(Point p, double dist) {
+	attachedPoints.put(p, new DoubleVal(dist));
 	
 }
 
