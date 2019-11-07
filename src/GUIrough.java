@@ -451,12 +451,16 @@ public class GUIrough {
 		JPanel buttonholder = new JPanel();
 		JPanel plannerheading = new JPanel();
 		
-		String[] choicesto = { "test1", "test2" };
-		String[] choicesfrom = { "test1", "test2" };
+		//Add all important destination points to an array for displaying
+		String[] choices = new String[gps.getPoints().size()];
+		for(int i = 0; i < gps.getPoints().size(); i++) {
+			choices[i] = gps.getPoints().get(i).getName();
+		}
+		
 		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
 		JComboBox<String> planstart = new JComboBox<String>(plannerstart);
-		JComboBox<String> to = new JComboBox<String>(choicesto);
-		JComboBox<String> from = new JComboBox<String>(choicesfrom);
+		JComboBox<String> to = new JComboBox<String>(choices);
+		JComboBox<String> from = new JComboBox<String>(choices);
 		JTextField dd = new JTextField();
 		JTextField dt = new JTextField();
 		JButton startlmfao = new JButton("Start individual trip");
