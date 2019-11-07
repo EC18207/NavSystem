@@ -55,8 +55,7 @@ public class AStar {
 					val.setG(calcedG);
 					val.calcF();
 					val.setPrevNode(current.point);
-					q.remove(val.point.getName());
-					q.add(val);
+					q.shiftUpNode(q.indexOf(val));
 				}
 				
 				}

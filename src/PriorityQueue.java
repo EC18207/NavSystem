@@ -6,15 +6,15 @@ import java.util.Iterator;
 
 public class PriorityQueue extends ArrayList<Node> implements Serializable {
 	
-	private void shiftup() {
-		int k = this.size() - 1;
+	private void shiftup(int index) {
+		int k = index;
 		while(k > 0) {
 			int p = (k-1)/2;
 			
 			Node child = this.get(k);
 			Node parent = this.get(p);
 			
-			if(child.f < parent.f) {
+			if((child.f >= 0) && (child.f < parent.f)) {
 				this.set(k, parent);
 				this.set(p, child);
 				
@@ -47,7 +47,7 @@ public class PriorityQueue extends ArrayList<Node> implements Serializable {
 				less = l;
 			}
 			
-			if(this.get(k).f > this.get(less).f) {
+			if(this.get(k).f > this.get(less).f && (this.get(less).f >= 0)) {
 				Node temp = this.get(k);
 				this.set(k, this.get(less));
 				this.set(less, temp);
@@ -64,9 +64,13 @@ public class PriorityQueue extends ArrayList<Node> implements Serializable {
 	
 	}
 	
+	public void shiftUpNode(int index) {
+		shiftup(index);
+	}
+	
 	public boolean add(Node e) {
 		super.add(e);
-		shiftup();
+		shiftup(this.size() - 1);
 		return true;
 	}
 	
