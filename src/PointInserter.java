@@ -99,16 +99,20 @@ public class PointInserter {
 					node.addPt(bottom, 1);
 				}
 				if(topL != null) {
-					node.addPt(topL, Math.sqrt(2));
+					node.addPt(topL, 1);
+					//node.addPt(topL, Math.sqrt(2));
 				}
 				if(topR != null) {
-					node.addPt(topR, Math.sqrt(2));
+					node.addPt(topR, 1);
+					//node.addPt(topR, Math.sqrt(2));
 				}
 				if(bottomL != null) {
-					node.addPt(bottomL, Math.sqrt(2));
+					node.addPt(bottomL, 1);
+					//node.addPt(bottomL, Math.sqrt(2));
 				}
 				if(bottomR != null) {
-					node.addPt(bottomR, Math.sqrt(2));
+					node.addPt(bottomR, 1);
+					//node.addPt(bottomR, Math.sqrt(2));
 				}
 				
 			}
