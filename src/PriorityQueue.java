@@ -113,7 +113,7 @@ public class PriorityQueue extends ArrayList<Node> implements Serializable {
 		int i = 0;
 		String s = "[";
 		while(i < this.size()) {
-			s = s + this.get(i).point.getName() + "--" + this.get(i).g + "-"+ this.get(i).f + "-" + this.get(i).prevNode.getName() + ", ";
+			s = s + this.get(i).point.getName() + "--" + this.get(i).h + "-"+ this.get(i).f + ", ";
 			i++;
 		}
 		s = s + "]";

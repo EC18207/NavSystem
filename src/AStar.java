@@ -68,6 +68,11 @@ public class AStar {
 				open.remove(open.indexOf(current.point.getName()));
 			}
 			
+//			if(isDestination) {
+//				System.out.println("I am " + to.getName());
+//			}
+//			System.out.println("PriorityQueue: " + q.toString());
+			
 		}
 		
 		Point location = values.get(to.getName()).point;
