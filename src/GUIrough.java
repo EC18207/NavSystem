@@ -199,6 +199,8 @@ public class GUIrough {
 	boolean hasstarted = false;
 	JFrame current = null;
 	GPS gps = new GPS();
+	JComboBox to;
+	JComboBox from;
  
 	public class MapMain {
 		Graphics g;
@@ -231,186 +233,7 @@ public class GUIrough {
 		}
 
 		JFrame todisplay = new JFrame("Navigation System");
-		this.current = todisplay;
-		todisplay.setSize(500, 250);
-		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel imagholder = new JPanel();
-		JLabel image = new JLabel();
-		ImageIcon map2draw = null;
-		if (this.mainmap == null) {
-			BufferedImage mapfin = null;
-
-			try {
-				mapfin = ImageIO.read(new File("Images\\rsz_1rsz_csse230MapImage.png"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			// constructs bufferedimage, we then modify that and create an imageicon with
-			// it.
-//		try {
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		Point2D.Double test1 = new Point2D.Double(57.00, 138.32);
-//		Point2D.Double test2 = new Point2D.Double(157.00, 25.00);
-			this.mainmap = mapfin;
-		}
-
-//		mainmap.drawpoints(test1, test2);
-		if (mainmap != null) {
-			map2draw = new ImageIcon((mainmap));
-			image.setIcon(map2draw);
-		}
-
-// Just Testing stuff
-//		System.out.println(mapfin.getIconHeight());
-//		System.out.println(mapfin.getIconWidth());
-//		mainmap.drawpoints(new Point2D.Double(138.5, 40.0), new Point2D.Double(22.0, 243.3));
-
-		image.setIcon(map2draw);
-		imagholder.add(image);
-		JPanel buttonholder = new JPanel();
-		JPanel plannerheading = new JPanel();
-		String[] choicesto = { "test1", "test2" };
-		String[] choicesfrom = { "test1", "test2" };
-		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
-		JComboBox<String> planstart = new JComboBox<String>(plannerstart);
-		JComboBox<String> to = new JComboBox<String>(choicesto);
-		JComboBox<String> from = new JComboBox<String>(choicesfrom);
-		JTextField dd = new JTextField();
-		JTextField dt = new JTextField();
-		JButton startlmfao = new JButton("Start individual trip");
-		JButton startbigboi = new JButton("Start Planner");
-		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
-		JLabel dist = new JLabel("todisplaydistance");
-		JLabel time = new JLabel("todisplaytime");
-		JLabel desd = new JLabel("Desired Distance(in miles):");
-		JLabel dest = new JLabel("Desired Time(in minutes):");
-		JLabel dis = new JLabel("Distance(in miles)::");
-		JLabel tim = new JLabel("Time(in minutes):");
-		JLabel tol = new JLabel("To:");
-		JLabel froml = new JLabel("From:");
-		JLabel nulll1 = new JLabel("");
-		JLabel nulll2 = new JLabel("");
-		JLabel nulll3 = new JLabel("");
-		JLabel nulll4 = new JLabel("");
-		JLabel nulll5 = new JLabel("");
-		plannerheading.add(header);
-		JPanel xtrabuttons = new JPanel();
-		xtrabuttons.add(startlmfao);
-		xtrabuttons.add(startbigboi);
-		buttonholder.setLayout(new GridLayout(3, 7));
-		buttonholder.add(tol);
-		buttonholder.add(to);
-		buttonholder.add(dis);
-		buttonholder.add(dist);
-		buttonholder.add(nulll1);
-		buttonholder.add(planstart);
-		buttonholder.add(nulll2);
-		buttonholder.add(nulll3);
-		buttonholder.add(nulll4);
-		buttonholder.add(nulll5);
-		buttonholder.add(desd);
-		buttonholder.add(dd);
-		buttonholder.add(froml);
-		buttonholder.add(from);
-		buttonholder.add(tim);
-		buttonholder.add(time);
-		buttonholder.add(dest);
-		buttonholder.add(dt);
-		todisplay.add(plannerheading, BorderLayout.EAST);
-		todisplay.add(xtrabuttons, BorderLayout.WEST);
-		todisplay.add(buttonholder, BorderLayout.SOUTH);
-		todisplay.add(imagholder, BorderLayout.NORTH);
-		startlmfao.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-				String toChoice = (String) to.getSelectedItem();
-				String fromChoice = (String) from.getSelectedItem();
-
-				FileReader reader = new FileReader();
-				ArrayList<Point> points = reader.getPoints();
-				if (points.contains(toChoice) && points.contains(fromChoice)) {
-					// aye
-				}
-
-			}
-
-		});
 		
-
-		startlmfao.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				String toChoiceStr = (String) to.getSelectedItem(); 
-				String fromChoiceStr = (String) from.getSelectedItem();
-				
-				if (toChoiceStr.equals(fromChoiceStr)) {
-				
-					System.out.println("Incorrect Arguments");
-					return;
-					
-				}
-				
-				FileReader reader = new FileReader();
-				ArrayList<Point> points = reader.getPoints();
-				
-				Point toChoice = null;
-				Point fromChoice = null;
-				
-				for (int i = 0; i < points.size(); i++) {
-					if (points.get(i).getName().equals(toChoiceStr)) toChoice = points.get(i);
-					if (points.get(i).getName().equals(fromChoiceStr)) fromChoice = points.get(i);
-				}
-				
-				AStar algo = new AStar();
-				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-				
-				for(int x = 0; x < path.size()-1; x++) {
-					System.out.println(path.get(x).getName() + " --> ");
-				}
-				System.out.println(path.get(path.size()-1).getName());
-				
-				
-			}
-			
-		});
-		
-		startbigboi.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
-			}
-			
-			
-			
-		});
-
-		todisplay.pack();
-		this.hasstarted = true;
-		todisplay.setVisible(true);
-
-	}
-	
-
-	public GUIrough() {
-		if (this.hasstarted == true) {
-			this.current.dispose();
-			this.hasstarted = false;
-
-		}
-
-		JFrame todisplay = new JFrame("Navigation System");
 		this.current = todisplay;
 		todisplay.setSize(500, 250);
 		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -465,7 +288,9 @@ public class GUIrough {
 		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
 		JComboBox<String> planstart = new JComboBox<String>(plannerstart);
 		JComboBox<String> to = new JComboBox<String>(choices);
+		this.to = to;
 		JComboBox<String> from = new JComboBox<String>(choices);
+		this.from = from;
 		JTextField dd = new JTextField();
 		JTextField dt = new JTextField();
 		JButton startlmfao = new JButton("Start individual trip");
@@ -511,58 +336,431 @@ public class GUIrough {
 		todisplay.add(xtrabuttons, BorderLayout.WEST);
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
 		todisplay.add(imagholder, BorderLayout.NORTH);
+		
 
-		startlmfao.addActionListener(new ActionListener() {
+		startlmfao.addActionListener(new tostartbutton());
+			
+			
 
 			//Fucking commit again
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				
+//				String toChoiceStr = (String) to.getSelectedItem(); 
+//				String fromChoiceStr = (String) from.getSelectedItem();
+//				
+//				if (toChoiceStr.equals(fromChoiceStr)) {
+//				
+//					System.out.println("Incorrect Arguments");
+//					return;
+//					
+//				}
+//				
+//				Point toChoice = null;
+//				Point fromChoice = null;
+//				
+//				
+//				for (int i = 0; i < gps.getPoints().size(); i++) {
+//					if (gps.getPoints().get(i).getName().equals(toChoiceStr)) toChoice = gps.getPoints().get(i);
+//					if (gps.getPoints().get(i).getName().equals(fromChoiceStr)) fromChoice = gps.getPoints().get(i);
+//				}
+//				
+//				if (fromChoice == null) {
+//					System.out.println("From not found");
+//					return;
+//				}
+//				
+//				if (toChoice == null) {
+//					System.out.println("From not found");
+//					return;
+//				}
+//
+//				
+//				AStar algo = new AStar();
+//				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
+//				
+//				System.out.println();
+//				
+//				System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
+//				if(path.size() != 0) { System.out.println("Successful Route Found!     Beginning: " + path.get(0).getName() + "  End: " + path.get(path.size()-1).getName()); }
+//				//Print Path
+//				for(int i = 0; i < path.size()-1; i++) {
+//					System.out.println(path.get(i).getName() + " --> ");
+//				}
+//				System.out.println(path.get(path.size()-1).getName());
+//				
+//				
+//				
+//			}
+//
+//		});
+
+		startbigboi.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
-				String toChoiceStr = (String) to.getSelectedItem(); 
-				String fromChoiceStr = (String) from.getSelectedItem();
-				
-				if (toChoiceStr.equals(fromChoiceStr)) {
-				
-					System.out.println("Incorrect Arguments");
-					return;
-					
-				}
-				
-				Point toChoice = null;
-				Point fromChoice = null;
-				
-				
-				for (int i = 0; i < gps.getPoints().size(); i++) {
-					if (gps.getPoints().get(i).getName().equals(toChoiceStr)) toChoice = gps.getPoints().get(i);
-					if (gps.getPoints().get(i).getName().equals(fromChoiceStr)) fromChoice = gps.getPoints().get(i);
-				}
-				
-				if (fromChoice == null) {
-					System.out.println("From not found");
-					return;
-				}
-				
-				if (toChoice == null) {
-					System.out.println("From not found");
-					return;
-				}
 
-				
-				AStar algo = new AStar();
-				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-				System.out.println();
-				
-				System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
-				if(path.size() != 0) { System.out.println("Successful Route Found!     Beginning: " + path.get(0).getName() + "  End: " + path.get(path.size()-1).getName()); }
-				//Print Path
-				for(int i = 0; i < path.size()-1; i++) {
-					System.out.println(path.get(i).getName() + " --> ");
-				}
-				System.out.println(path.get(path.size()-1).getName());
-				
 			}
 
+			
 		});
+
+		todisplay.pack();
+		this.hasstarted = true;
+		todisplay.setVisible(true);
+
+	}	
+	
+//		if (this.hasstarted == true) {
+//			this.current.dispose();
+//			this.hasstarted = false;
+//
+//		}
+//
+//		JFrame todisplay = new JFrame("Navigation System");
+//		this.current = todisplay;
+//		todisplay.setSize(500, 250);
+//		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		JPanel imagholder = new JPanel();
+//		JLabel image = new JLabel();
+//		ImageIcon map2draw = null;
+//		if (this.mainmap == null) {
+//			BufferedImage mapfin = null;
+//
+//			try {
+//				mapfin = ImageIO.read(new File("Images\\rsz_1rsz_csse230MapImage.png"));
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//			// constructs bufferedimage, we then modify that and create an imageicon with
+//			// it.
+////		try {
+////		} catch (IOException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		}
+////		Point2D.Double test1 = new Point2D.Double(57.00, 138.32);
+////		Point2D.Double test2 = new Point2D.Double(157.00, 25.00);
+//			this.mainmap = mapfin;
+//		}
+//
+////		mainmap.drawpoints(test1, test2);
+//		if (mainmap != null) {
+//			map2draw = new ImageIcon((mainmap));
+//			image.setIcon(map2draw);
+//		}
+//
+//// Just Testing stuff
+////		System.out.println(mapfin.getIconHeight());
+////		System.out.println(mapfin.getIconWidth());
+////		mainmap.drawpoints(new Point2D.Double(138.5, 40.0), new Point2D.Double(22.0, 243.3));
+//
+//		image.setIcon(map2draw);
+//		imagholder.add(image);
+//		JPanel buttonholder = new JPanel();
+//		JPanel plannerheading = new JPanel();
+//		String[] choicesto = { "test1", "test2" };
+//		String[] choicesfrom = { "test1", "test2" };
+//		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
+//		JComboBox<String> planstart = new JComboBox<String>(plannerstart);
+//		JComboBox<String> to = new JComboBox<String>(choicesto);
+//		this.to = to;
+//		JComboBox<String> from = new JComboBox<String>(choicesfrom);
+//		this.from = from;
+//		JTextField dd = new JTextField();
+//		JTextField dt = new JTextField();
+//		JButton startlmfao = new JButton("Start individual trip");
+//		JButton startbigboi = new JButton("Start Planner");
+//		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
+//		JLabel dist = new JLabel("todisplaydistance");
+//		JLabel time = new JLabel("todisplaytime");
+//		JLabel desd = new JLabel("Desired Distance(in miles):");
+//		JLabel dest = new JLabel("Desired Time(in minutes):");
+//		JLabel dis = new JLabel("Distance(in miles)::");
+//		JLabel tim = new JLabel("Time(in minutes):");
+//		JLabel tol = new JLabel("To:");
+//		JLabel froml = new JLabel("From:");
+//		JLabel nulll1 = new JLabel("");
+//		JLabel nulll2 = new JLabel("");
+//		JLabel nulll3 = new JLabel("");
+//		JLabel nulll4 = new JLabel("");
+//		JLabel nulll5 = new JLabel("");
+//		plannerheading.add(header);
+//		JPanel xtrabuttons = new JPanel();
+//		xtrabuttons.add(startlmfao);
+//		xtrabuttons.add(startbigboi);
+//		buttonholder.setLayout(new GridLayout(3, 7));
+//		buttonholder.add(tol);
+//		buttonholder.add(to);
+//		buttonholder.add(dis);
+//		buttonholder.add(dist);
+//		buttonholder.add(nulll1);
+//		buttonholder.add(planstart);
+//		buttonholder.add(nulll2);
+//		buttonholder.add(nulll3);
+//		buttonholder.add(nulll4);
+//		buttonholder.add(nulll5);
+//		buttonholder.add(desd);
+//		buttonholder.add(dd);
+//		buttonholder.add(froml);
+//		buttonholder.add(from);
+//		buttonholder.add(tim);
+//		buttonholder.add(time);
+//		buttonholder.add(dest);
+//		buttonholder.add(dt);
+//		todisplay.add(plannerheading, BorderLayout.EAST);
+//		todisplay.add(xtrabuttons, BorderLayout.WEST);
+//		todisplay.add(buttonholder, BorderLayout.SOUTH);
+//		todisplay.add(imagholder, BorderLayout.NORTH);
+//		startlmfao.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//
+//				String toChoice = (String) to.getSelectedItem();
+//				String fromChoice = (String) from.getSelectedItem();
+//
+//				FileReader reader = new FileReader();
+//				ArrayList<Point> points = reader.getPoints();
+//				if (points.contains(toChoice) && points.contains(fromChoice)) {
+//					// aye
+//				}
+//
+//			}
+//
+//		});
+//		
+//
+//		startlmfao.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				
+//				String toChoiceStr = (String) to.getSelectedItem(); 
+//				String fromChoiceStr = (String) from.getSelectedItem();
+//				
+//				if (toChoiceStr.equals(fromChoiceStr)) {
+//				
+//					System.out.println("Incorrect Arguments");
+//					return;
+//					
+//				}
+//				
+//				FileReader reader = new FileReader();
+//				ArrayList<Point> points = reader.getPoints();
+//				
+//				Point toChoice = null;
+//				Point fromChoice = null;
+//				
+//				for (int i = 0; i < points.size(); i++) {
+//					if (points.get(i).getName().equals(toChoiceStr)) toChoice = points.get(i);
+//					if (points.get(i).getName().equals(fromChoiceStr)) fromChoice = points.get(i);
+//				}
+//				
+//				AStar algo = new AStar();
+//				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
+//				
+//				for(int x = 0; x < path.size()-1; x++) {
+//					System.out.println(path.get(x).getName() + " --> ");
+//				}
+//				System.out.println(path.get(path.size()-1).getName());
+//				
+//				
+//			}
+//			
+//		});
+//		
+//		startbigboi.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				
+//				
+//				
+//			}
+//			
+//			
+//			
+//		});
+//
+//		todisplay.pack();
+//		this.hasstarted = true;
+//		todisplay.setVisible(true);
+//
+//	}
+	
+
+	public GUIrough() {
+		if (this.hasstarted == true) {
+			this.current.dispose();
+			this.hasstarted = false;
+
+		}
+
+		JFrame todisplay = new JFrame("Navigation System");
+		
+		this.current = todisplay;
+		todisplay.setSize(500, 250);
+		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JPanel imagholder = new JPanel();
+		JLabel image = new JLabel();
+		ImageIcon map2draw = null;
+		if (this.mainmap == null) {
+			BufferedImage mapfin = null;
+
+			try {
+				mapfin = ImageIO.read(new File("Images\\rsz_1rsz_csse230MapImage.png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// constructs bufferedimage, we then modify that and create an imageicon with
+			// it.
+//		try {
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		Point2D.Double test1 = new Point2D.Double(57.00, 138.32);
+//		Point2D.Double test2 = new Point2D.Double(157.00, 25.00);
+			this.mainmap = mapfin;
+		}
+
+//		mainmap.drawpoints(test1, test2);
+		if (mainmap != null) {
+			map2draw = new ImageIcon((mainmap));
+			image.setIcon(map2draw);
+		}
+
+// Just Testing stuff
+//		System.out.println(mapfin.getIconHeight());
+//		System.out.println(mapfin.getIconWidth());
+		//l
+//		mainmap.drawpoints(new Point2D.Double(138.5, 40.0), new Point2D.Double(22.0, 243.3));
+
+		image.setIcon(map2draw);
+		imagholder.add(image);
+		JPanel buttonholder = new JPanel();
+		JPanel plannerheading = new JPanel();
+		
+		//Add all important destination points to an array for displaying
+		String[] choices = new String[gps.getPoints().size()];
+		for(int i = 0; i < gps.getPoints().size(); i++) {
+			choices[i] = gps.getPoints().get(i).getName();
+		}
+		
+		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
+		JComboBox<String> planstart = new JComboBox<String>(plannerstart);
+		JComboBox<String> to = new JComboBox<String>(choices);
+		this.to = to;
+		JComboBox<String> from = new JComboBox<String>(choices);
+		this.from = from;
+		JTextField dd = new JTextField();
+		JTextField dt = new JTextField();
+		JButton startlmfao = new JButton("Start individual trip");
+		JButton startbigboi = new JButton("Start Planner");
+		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
+		JLabel dist = new JLabel("todisplaydistance");
+		JLabel time = new JLabel("todisplaytime");
+		JLabel desd = new JLabel("Desired Distance(in miles):");
+		JLabel dest = new JLabel("Desired Time(in minutes):");
+		JLabel dis = new JLabel("Distance(in miles)::");
+		JLabel tim = new JLabel("Time(in minutes):");
+		JLabel tol = new JLabel("To:");
+		JLabel froml = new JLabel("From:");
+		JLabel nulll1 = new JLabel("");
+		JLabel nulll2 = new JLabel("");
+		JLabel nulll3 = new JLabel("");
+		JLabel nulll4 = new JLabel("");
+		JLabel nulll5 = new JLabel("");
+		plannerheading.add(header);
+		JPanel xtrabuttons = new JPanel();
+		xtrabuttons.add(startlmfao);
+		xtrabuttons.add(startbigboi);
+		buttonholder.setLayout(new GridLayout(3, 7));
+		buttonholder.add(tol);
+		buttonholder.add(to);
+		buttonholder.add(dis);
+		buttonholder.add(dist);
+		buttonholder.add(nulll1);
+		buttonholder.add(planstart);
+		buttonholder.add(nulll2);
+		buttonholder.add(nulll3);
+		buttonholder.add(nulll4);
+		buttonholder.add(nulll5);
+		buttonholder.add(desd);
+		buttonholder.add(dd);
+		buttonholder.add(froml);
+		buttonholder.add(from);
+		buttonholder.add(tim);
+		buttonholder.add(time);
+		buttonholder.add(dest);
+		buttonholder.add(dt);
+		todisplay.add(plannerheading, BorderLayout.EAST);
+		todisplay.add(xtrabuttons, BorderLayout.WEST);
+		todisplay.add(buttonholder, BorderLayout.SOUTH);
+		todisplay.add(imagholder, BorderLayout.NORTH);
+		
+
+		startlmfao.addActionListener(new tostartbutton());
+			
+			
+
+			//Fucking commit again
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				
+//				String toChoiceStr = (String) to.getSelectedItem(); 
+//				String fromChoiceStr = (String) from.getSelectedItem();
+//				
+//				if (toChoiceStr.equals(fromChoiceStr)) {
+//				
+//					System.out.println("Incorrect Arguments");
+//					return;
+//					
+//				}
+//				
+//				Point toChoice = null;
+//				Point fromChoice = null;
+//				
+//				
+//				for (int i = 0; i < gps.getPoints().size(); i++) {
+//					if (gps.getPoints().get(i).getName().equals(toChoiceStr)) toChoice = gps.getPoints().get(i);
+//					if (gps.getPoints().get(i).getName().equals(fromChoiceStr)) fromChoice = gps.getPoints().get(i);
+//				}
+//				
+//				if (fromChoice == null) {
+//					System.out.println("From not found");
+//					return;
+//				}
+//				
+//				if (toChoice == null) {
+//					System.out.println("From not found");
+//					return;
+//				}
+//
+//				
+//				AStar algo = new AStar();
+//				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
+//				
+//				System.out.println();
+//				
+//				System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
+//				if(path.size() != 0) { System.out.println("Successful Route Found!     Beginning: " + path.get(0).getName() + "  End: " + path.get(path.size()-1).getName()); }
+//				//Print Path
+//				for(int i = 0; i < path.size()-1; i++) {
+//					System.out.println(path.get(i).getName() + " --> ");
+//				}
+//				System.out.println(path.get(path.size()-1).getName());
+//				
+//				
+//				
+//			}
+//
+//		});
 
 		startbigboi.addActionListener(new ActionListener() {
 
@@ -581,7 +779,7 @@ public class GUIrough {
 	}
 
 	public void update(ArrayList<Point> todo) {
-		if (this.hasstarted == false) {
+		if (this.hasstarted == false || this.mainmap == null) {
 			this.GUIroughres();
 
 		}
@@ -591,6 +789,68 @@ public class GUIrough {
 		}
 
 		this.GUIroughres();
+		this.mainmap = null;
+
+	}
+	public class tostartbutton implements ActionListener {
+
+		
+		
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String toChoiceStr = (String)to.getSelectedItem();
+			String fromChoiceStr = (String) from.getSelectedItem();
+			
+			if (toChoiceStr.equals(fromChoiceStr)) {
+			
+				System.out.println("Incorrect Arguments");
+				return;
+				
+			}
+			
+			Point toChoice = null;
+			Point fromChoice = null;
+			
+			
+			for (int i = 0; i < gps.getPoints().size(); i++) {
+				if (gps.getPoints().get(i).getName().equals(toChoiceStr)) toChoice = gps.getPoints().get(i);
+				if (gps.getPoints().get(i).getName().equals(fromChoiceStr)) fromChoice = gps.getPoints().get(i);
+			}
+			
+			if (fromChoice == null) {
+				System.out.println("From not found");
+				return;
+			}
+			
+			if (toChoice == null) {
+				System.out.println("From not found");
+				return;
+			}
+
+			
+			AStar algo = new AStar();
+			ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
+			
+			System.out.println();
+			if(path.size() > 0) {
+				System.out.println("path found");
+			}
+			System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
+//			if(path.size() != 0) { System.out.println("Successful Route Found!     Beginning: " + path.get(0).getName() + "  End: " + path.get(path.size()-1).getName()); }
+//			//Print Path
+//			for(int i = 0; i < path.size()-1; i++) {
+//				System.out.println(path.get(i).getName() + " --> ");
+//			}
+//			System.out.println(path.get(path.size()-1).getName());
+			update(path);
+			
+			
+			
+			
+		}
+
+
 
 	}
 
