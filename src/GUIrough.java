@@ -300,7 +300,7 @@ public class GUIrough {
 		JButton startbigboi = new JButton("Start Planner");
 		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
 		JLabel dist = new JLabel(this.storeddistance);
-		JLabel time = new JLabel("todisplaytime");
+		JLabel time = new JLabel(this.storedtime);
 		JLabel desd = new JLabel("Desired Distance(in miles):");
 		JLabel dest = new JLabel("Desired Time(in minutes):");
 		JLabel dis = new JLabel("Distance(in miles)::");
@@ -707,6 +707,7 @@ public class GUIrough {
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
 		todisplay.add(imagholder, BorderLayout.NORTH);
 		this.storeddistance = "todisplaydistance";
+		this.storedtime = "todisplaytime";
 		
 
 		startlmfao.addActionListener(new tostartbutton());
@@ -792,9 +793,13 @@ public class GUIrough {
 
 		}
 		double tocon = (todo.size()*d_c_f);
+		double conv = 4.656;
+		double tocont = (tocon*conv);
 		this.storeddistance = String.valueOf(tocon);
 		System.out.println(this.storeddistance);
-
+		
+		this.storedtime = String.valueOf(tocont);
+		System.out.println(this.storedtime);
 
 		this.GUIroughres();
 		this.mainmap = null;
