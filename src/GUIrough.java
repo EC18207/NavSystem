@@ -211,6 +211,11 @@ public class GUIrough {
 	static double d_c_f = 0.007142857142857;
 	String storeddistance;
 	String storedtime;
+	double pland;
+	double plant;
+	JTextField dd;
+	JTextField dt;
+	JComboBox startloc;
 
 	public class MapMain {
 		Graphics g;
@@ -227,6 +232,14 @@ public class GUIrough {
 			g2.setStroke(new BasicStroke(2));
 			g2.setColor(Color.MAGENTA);
 			g2.drawLine((int) in1.getX(), (int) in1.getY(), (int) in2.getX(), (int) in2.getY());
+
+			return this.tomod;
+
+		}
+		public BufferedImage highpoints(Point in1) {
+			g2.setStroke(new BasicStroke(2));
+			g2.setColor(Color.GREEN);
+			g2.fillOval((int)in1.getX(), (int)in1.getY(), 2, 2);
 
 			return this.tomod;
 
@@ -302,13 +315,16 @@ public class GUIrough {
 		}
 
 		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
-		JComboBox<String> planstart = new JComboBox<String>(plannerstart);
+		JComboBox<String> planstart = new JComboBox<String>(choices);
+		this.startloc = planstart;
 		JComboBox<String> to = new JComboBox<String>(choices);
 		this.to = to;
 		JComboBox<String> from = new JComboBox<String>(choices);
 		this.from = from;
 		JTextField dd = new JTextField();
+		this.dd = dd;
 		JTextField dt = new JTextField();
+		this.dt = dt;
 		JButton startlmfao = new JButton("Start individual trip");
 		JButton startbigboi = new JButton("Start Planner");
 		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
@@ -665,13 +681,16 @@ public class GUIrough {
 		}
 
 		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
-		JComboBox<String> planstart = new JComboBox<String>(plannerstart);
+		JComboBox<String> planstart = new JComboBox<String>(choices);
+		this.startloc = planstart;
 		JComboBox<String> to = new JComboBox<String>(choices);
 		this.to = to;
 		JComboBox<String> from = new JComboBox<String>(choices);
 		this.from = from;
 		JTextField dd = new JTextField();
+		this.dd = dd;
 		JTextField dt = new JTextField();
+		this.dt = dt;
 		JButton startlmfao = new JButton("Start individual trip");
 		JButton startbigboi = new JButton("Start Planner");
 		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
@@ -807,6 +826,52 @@ public class GUIrough {
 		this.GUIroughres();
 		this.mainmap = null;
 
+	}
+	public void highlight(ArrayList<Point> todo) {
+		if (this.hasstarted == false || this.mainmap == null) {
+			this.GUIroughres();
+
+		}
+		for (int i = 0; i < todo.size() - 1; i++) {
+			this.mainmap = new MapMain(this.mainmap).highpoints(todo.get(i));
+
+		}
+		
+
+		this.GUIroughres();
+		this.mainmap = null;
+
+	}
+	
+	public class planbutton implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String dist = dd.getText();
+			if(dist == null) {
+				pland = 0;
+			}
+			else {
+			pland = Integer.parseInt(dist);
+			}
+			String tim = dt.getText();
+			if(tim == null) {
+				plant = 0;
+			}
+			else {
+				plant = Integer.parseInt(tim);
+			}
+			
+			String startLocation = (String) startloc.getSelectedItem();
+			
+			
+			AStar algo = new AStar();
+			ArrayList<Point> possiblePaths = algo.findAllPossible(gps.getMap().get(startLocation), gps.getPoints(), pland, plant);
+			highlight(possiblePaths);
+			
+			
+		}
+		
 	}
 
 	public class tostartbutton implements ActionListener {
