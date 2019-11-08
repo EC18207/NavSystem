@@ -1,29 +1,44 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class PointInserter {
+import javax.imageio.ImageIO;
+
+public class NodeInserter {
 	
 	HashMap<String, Point> nodes = new HashMap<String, Point>();
 	ArrayList<Point> importantPoints;
 	
+	public BufferedImage img = null;
+	String imageDirectory = "Images\\MapImageTesting.png";
+	
 	String fileDirectory = "MapBlock\\Coordinates.txt";
 	
-	public PointInserter() {
-		completeMap();
+	public NodeInserter() {
+		File f = new File(imageDirectory);
+		try {
+			img = ImageIO.read(f);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(img != null) {
+			completeMap();
+		}
 	}
 	
 	public void completeMap() {
 		FileReader r = new FileReader();
 		
-		File f = new File(fileDirectory);
+		File t = new File(fileDirectory);
 		
-		r.fileReadIn(f);
+		r.fileReadIn(t);
 		
 		importantPoints = r.getPoints();
 		
-		insertNodes(r.getBlocks(), importantPoints);
+		insertNodes(importantPoints);
 		
 //		for(int i = 0; i < importantPoints.size(); i++) {
 //			System.out.println("Node: " + importantPoints.get(i).getName() + "              List: " + importantPoints.get(i).attachedPointsToString());
@@ -31,9 +46,9 @@ public class PointInserter {
 
 	}
  
-	public void insertNodes(ArrayList<Block> blocks, ArrayList<Point> points) {
+	public void insertNodes(ArrayList<Point> points) {
 				
-		fillMap(blocks);
+		fillMap();
 		
 		connectMap();
 		
@@ -55,19 +70,20 @@ public class PointInserter {
 				nodes.put(temp.getName(), nodeInMap);
 				points.remove(temp);
 				points.add(nodeInMap);
+			} else {
+				System.out.println("Could not find: " + temp.getName() + " in the map.");
+				points.remove(temp);
 			}
 		}
 	}
 	
 	public void connectMap() {
-		int w = 620;
-		int h = 531;
 		int x = 0;
 		int y = 0;
 		
-		while(x < w+1) {
+		while(x < img.getWidth()) {
 			
-			for(y = 0; y < h+1; y++) {
+			for(y = 0; y < img.getHeight(); y++) {
 				
 				String s = "X" + x + "Y" + y;
 				Point node = nodes.get(s);
@@ -127,38 +143,29 @@ public class PointInserter {
 		}
 	}
 	
-	public void fillMap(ArrayList<Block> blocks) {
+	public void fillMap() {
 		//width: 620
 		//height: 531
-		int w = 620;
-		int h = 531;
 		int x = 0;
 		int y = 0;
-		boolean flag = false;
 		
 		//Insert Nodes
-		while(x < w+1) {
+		while(x < img.getWidth()) {
 			
-			for(y = 0; y < h+1; y++) {
+			for(y = 0; y < img.getHeight(); y++) {
 				
-				int i = 0;
-				while(i < blocks.size()) {
-					int[] temp = blocks.get(i).getBlock();
-					
-					if(x >= temp[0] && x <= temp[2] && y >= temp[1] && y <= temp[3]) {
-						flag = true;
-						break;
-					}
-					
-					i++;
-				}
+				int color = img.getRGB(x, y);
+				int red = (color & 0x00ff0000) >> 16;
+				int green = (color & 0x0000ff00) >> 8;
+				int blue = (color & 0x000000ff);
 				
-				if(!flag) {
+				boolean white = (red > 240) && (green > 240) && (blue > 240);
+				
+				if(white) {
 					String s = "X" + x + "Y" + y;
 					nodes.put(s, new Point(x,y,s));
-				} else {
-					flag = false;
 				}
+				
 				
 			}
 			
