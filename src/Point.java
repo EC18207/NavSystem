@@ -49,6 +49,15 @@ public double getY() {
 return super.y;
 }
 
+public String attachedPointsToString() {
+	String s = "[";
+	for(Point p : attachedPoints.keySet()) {
+		s = s + p.getName() + ", ";
+	}
+	s = s + "]";
+	return s;
+}
+
 @Override
 public void setLocation(double x, double y) {
 super.x = x;
