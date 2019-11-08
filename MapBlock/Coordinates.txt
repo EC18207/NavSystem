@@ -1,3 +1,5 @@
+p[24,20,Top Left Corner,]
+p[612,468,Bottom Right Corner,]
 p[64,173,ISU,]
 p[560,104,Rose,]
 p[342,241,Deming Park,]
