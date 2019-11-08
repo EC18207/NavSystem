@@ -201,6 +201,9 @@ public class GUIrough {
 	GPS gps = new GPS();
 	JComboBox to;
 	JComboBox from;
+	static double d_c_f = 0.007142857142857;
+	String storeddistance;
+	String storedtime;
  
 	public class MapMain {
 		Graphics g;
@@ -296,7 +299,7 @@ public class GUIrough {
 		JButton startlmfao = new JButton("Start individual trip");
 		JButton startbigboi = new JButton("Start Planner");
 		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
-		JLabel dist = new JLabel("todisplaydistance");
+		JLabel dist = new JLabel(this.storeddistance);
 		JLabel time = new JLabel("todisplaytime");
 		JLabel desd = new JLabel("Desired Distance(in miles):");
 		JLabel dest = new JLabel("Desired Time(in minutes):");
@@ -667,7 +670,7 @@ public class GUIrough {
 		JLabel time = new JLabel("todisplaytime");
 		JLabel desd = new JLabel("Desired Distance(in miles):");
 		JLabel dest = new JLabel("Desired Time(in minutes):");
-		JLabel dis = new JLabel("Distance(in miles)::");
+		JLabel dis = new JLabel("Distance(in miles):");
 		JLabel tim = new JLabel("Time(in minutes):");
 		JLabel tol = new JLabel("To:");
 		JLabel froml = new JLabel("From:");
@@ -703,6 +706,7 @@ public class GUIrough {
 		todisplay.add(xtrabuttons, BorderLayout.WEST);
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
 		todisplay.add(imagholder, BorderLayout.NORTH);
+		this.storeddistance = "todisplaydistance";
 		
 
 		startlmfao.addActionListener(new tostartbutton());
@@ -787,6 +791,10 @@ public class GUIrough {
 			this.mainmap = new MapMain(this.mainmap).drawpoints(todo.get(i), todo.get(i + 1));
 
 		}
+		double tocon = (todo.size()*d_c_f);
+		this.storeddistance = String.valueOf(tocon);
+		System.out.println(this.storeddistance);
+
 
 		this.GUIroughres();
 		this.mainmap = null;
