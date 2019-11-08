@@ -159,7 +159,7 @@ public class NodeInserter {
 				int green = (color & 0x0000ff00) >> 8;
 				int blue = (color & 0x000000ff);
 				
-				boolean white = (red > 240) && (green > 240) && (blue > 240);
+				boolean white = (red > 245) && (green > 245) && (blue > 245);
 				
 				if(white) {
 					String s = "X" + x + "Y" + y;
