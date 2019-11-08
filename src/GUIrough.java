@@ -424,14 +424,9 @@ public class GUIrough {
 //
 //		});
 
-		startbigboi.addActionListener(new ActionListener() {
+		startbigboi.addActionListener(new planbutton());
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-			}
-
-		});
+			
 
 		todisplay.pack();
 		this.hasstarted = true;
@@ -792,14 +787,9 @@ public class GUIrough {
 //
 //		});
 
-		startbigboi.addActionListener(new ActionListener() {
+		startbigboi.addActionListener(new planbutton());
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-			}
-
-		});
+		
 
 		todisplay.pack();
 		this.hasstarted = true;
