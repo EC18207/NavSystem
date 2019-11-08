@@ -838,14 +838,14 @@ public class GUIrough {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String dist = dd.getText();
-			if(dist == null) {
+			if(dist.equals("")) {
 				pland = 0;
 			}
 			else {
 			pland = Integer.parseInt(dist);
 			}
 			String tim = dt.getText();
-			if(tim == null) {
+			if(tim.contentEquals("")) {
 				plant = 0;
 			}
 			else {
