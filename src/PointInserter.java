@@ -8,7 +8,7 @@ public class PointInserter {
 	HashMap<String, Point> nodes = new HashMap<String, Point>();
 	ArrayList<Point> importantPoints;
 	
-	String fileDirectory = "MapBlock\\Coordinates.txt";
+	String fileDirectory = "MapBlock\\CoordinatesOLD.txt";
 	
 	public PointInserter() {
 		completeMap();
