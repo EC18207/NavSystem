@@ -247,7 +247,7 @@ public class GUIrough {
 			BufferedImage mapfin = null;
 
 			try {
-				mapfin = ImageIO.read(new File("Images\\rsz_1rsz_csse230MapImage.png"));
+				mapfin = ImageIO.read(new File("Images\\MapImage.png"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
