@@ -834,8 +834,9 @@ public class GUIrough {
 			
 			System.out.println();
 			if(path.size() > 0) {
-				System.out.println("path found");
+				System.out.println("Path Found.");
 			}
+			
 			System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
 //			if(path.size() != 0) { System.out.println("Successful Route Found!     Beginning: " + path.get(0).getName() + "  End: " + path.get(path.size()-1).getName()); }
 //			//Print Path
