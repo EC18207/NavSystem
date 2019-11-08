@@ -867,6 +867,18 @@ public class GUIrough {
 			
 			AStar algo = new AStar();
 			ArrayList<Point> possiblePaths = algo.findAllPossible(gps.getMap().get(startLocation), gps.getPoints(), pland, plant);
+			
+			if(possiblePaths.size() > 0) {
+				for(int i = 0; i < possiblePaths.size()-1; i++) {
+					System.out.println(possiblePaths.get(i).getName() + ", ");
+				}
+				System.out.println(possiblePaths.get(possiblePaths.size()-1));
+			} else {
+				System.out.println("No possible paths with that distance/time!");
+			}
+			
+			
+			
 			highlight(possiblePaths);
 			
 			
