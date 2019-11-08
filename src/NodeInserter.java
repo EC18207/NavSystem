@@ -12,7 +12,7 @@ public class NodeInserter {
 	ArrayList<Point> importantPoints;
 	
 	public BufferedImage img = null;
-	String imageDirectory = "Images\\MapImageTesting.png";
+	String imageDirectory = "Images\\MapImageReadingFile.png";
 	
 	String fileDirectory = "MapBlock\\Coordinates.txt";
 	
@@ -159,9 +159,9 @@ public class NodeInserter {
 				int green = (color & 0x0000ff00) >> 8;
 				int blue = (color & 0x000000ff);
 				
-				boolean white = (red > 245) && (green > 245) && (blue > 245);
+				boolean black = (red < 5) && (green < 5) && (blue < 5);
 				
-				if(white) {
+				if(black) {
 					String s = "X" + x + "Y" + y;
 					nodes.put(s, new Point(x,y,s));
 				}
