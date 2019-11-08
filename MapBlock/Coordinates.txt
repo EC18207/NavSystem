@@ -1,9 +1,2 @@
-b[10,10,30,30,]
-b[50,50,100,100,]
-p[300,250,Alex,]
-p[300,350,Joe,]
-p[300,450,Ethan,]
-p[300,500,Marcus,]
-
-p[5,5,TopLeft,]
-p[600,500,BottomRight,]
+p[82,243,M. Moggers Pub,]
+p[109,243,Headstone Friends,]
