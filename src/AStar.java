@@ -97,22 +97,41 @@ public class AStar {
 		
 		int i = 0;
 		while(i < destinations.size()) {
+			boolean flag = false;
 			Point dest = destinations.get(i);
 			if(!dest.equals(from)) {
-				double distToNode = findShortestPath(from, dest).size()*distConversion;
-				double timeToNode = distToNode*timeConversion;
 				
-				if((distance > 0) && (time > 0)) {
-					if(distToNode <= distance && timeToNode <= time) {
-						possiblePaths.add(dest);
-					}
-				} else if (distance > 0) {
-					if(distToNode <= distance) {
-						possiblePaths.add(dest);
+				double x = dest.getX() - from.getX();
+				double y = dest.getY() - from.getY();
+				
+				double straightLineDistance = Math.sqrt((x*x)+(y*y))*distConversion;
+				
+				if(distance > 0) {
+					if(straightLineDistance > distance) {
+						flag = true;
 					}
 				} else {
-					if(timeToNode <= time) {
-						possiblePaths.add(dest);
+					if((straightLineDistance*timeConversion) > time) {
+						flag = true;
+					}
+				}
+				
+				if(!flag) {
+					double distToNode = findShortestPath(from, dest).size()*distConversion;
+					double timeToNode = distToNode*timeConversion;
+					
+					if((distance > 0) && (time > 0)) {
+						if(distToNode <= distance && timeToNode <= time) {
+							possiblePaths.add(dest);
+						}
+					} else if (distance > 0) {
+						if(distToNode <= distance) {
+							possiblePaths.add(dest);
+						}
+					} else {
+						if(timeToNode <= time) {
+							possiblePaths.add(dest);
+						}
 					}
 				}
 				

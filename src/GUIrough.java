@@ -314,7 +314,6 @@ public class GUIrough {
 			choices[i] = gps.getPoints().get(i).getName();
 		}
 
-		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
 		JComboBox<String> planstart = new JComboBox<String>(choices);
 		this.startloc = planstart;
 		JComboBox<String> to = new JComboBox<String>(choices);
@@ -675,7 +674,6 @@ public class GUIrough {
 			choices[i] = gps.getPoints().get(i).getName();
 		}
 
-		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
 		JComboBox<String> planstart = new JComboBox<String>(choices);
 		this.startloc = planstart;
 		JComboBox<String> to = new JComboBox<String>(choices);
@@ -860,12 +858,13 @@ public class GUIrough {
 			
 			if(possiblePaths.size() > 0) {
 				for(int i = 0; i < possiblePaths.size()-1; i++) {
-					System.out.println(possiblePaths.get(i).getName() + ", ");
+					System.out.print(possiblePaths.get(i).getName() + ", ");
 				}
-				System.out.println(possiblePaths.get(possiblePaths.size()-1));
+				System.out.print(possiblePaths.get(possiblePaths.size()-1).getName());
 			} else {
 				System.out.println("No possible paths with that distance/time!");
 			}
+			System.out.println();
 			
 			
 			
