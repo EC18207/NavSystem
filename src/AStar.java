@@ -8,7 +8,6 @@ public class AStar {
 	}
 	
 	public ArrayList<Point> findShortestPath(Point from, Point to) {
-		
 		ArrayList<String> open = new ArrayList<String>();
 		ArrayList<String> closed = new ArrayList<String>();
 		
@@ -82,6 +81,46 @@ public class AStar {
 		}
 		
 		return travel;	
+		
+		
+	}
+	
+	public ArrayList<Point> findAllPossible(Point from, ArrayList<Point> destinations, double distance, double time) {
+		ArrayList<Point> possiblePaths = new ArrayList<Point>();
+		
+		if((distance <= 0) && (time <= 0)) {
+			return possiblePaths;
+		}
+		
+		double distConversion = 0.007142857142857;
+		double timeConversion = 4.656;
+		
+		int i = 0;
+		while(i < destinations.size()) {
+			Point dest = destinations.get(i);
+			if(!dest.equals(from)) {
+				double distToNode = findShortestPath(from, dest).size()*distConversion;
+				double timeToNode = distToNode*timeConversion;
+				
+				if((distance > 0) && (time > 0)) {
+					if(distToNode <= distance && timeToNode <= time) {
+						possiblePaths.add(dest);
+					}
+				} else if (distance > 0) {
+					if(distToNode <= distance) {
+						possiblePaths.add(dest);
+					}
+				} else {
+					if(timeToNode <= time) {
+						possiblePaths.add(dest);
+					}
+				}
+				
+			}
+			i++;
+		}
+		
+		return possiblePaths;
 		
 		
 	}
