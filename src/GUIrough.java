@@ -167,11 +167,14 @@
 //
 //}
 
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Line2D;
@@ -182,10 +185,14 @@ import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -204,7 +211,7 @@ public class GUIrough {
 	static double d_c_f = 0.007142857142857;
 	String storeddistance;
 	String storedtime;
- 
+
 	public class MapMain {
 		Graphics g;
 		Graphics2D g2;
@@ -217,13 +224,20 @@ public class GUIrough {
 		}
 
 		public BufferedImage drawpoints(Point in1, Point in2) {
-			g2.setColor(Color.GREEN);
+			g2.setStroke(new BasicStroke(2));
+			g2.setColor(Color.MAGENTA);
 			g2.drawLine((int) in1.getX(), (int) in1.getY(), (int) in2.getX(), (int) in2.getY());
-			
+
 			return this.tomod;
 
 		}
 
+	}
+
+	private static double round2(double value) {
+		BigDecimal toround = new BigDecimal(String.valueOf(value));
+		toround = toround.setScale(2, RoundingMode.HALF_UP);
+		return toround.doubleValue();
 	}
 
 	public void GUIroughres() {
@@ -234,7 +248,8 @@ public class GUIrough {
 		}
 
 		JFrame todisplay = new JFrame("Navigation System");
-		
+		todisplay.setPreferredSize(new Dimension(750, 750));
+
 		this.current = todisplay;
 		todisplay.setSize(500, 250);
 		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -272,20 +287,20 @@ public class GUIrough {
 // Just Testing stuff
 //		System.out.println(mapfin.getIconHeight());
 //		System.out.println(mapfin.getIconWidth());
-		//l
+		// l
 //		mainmap.drawpoints(new Point2D.Double(138.5, 40.0), new Point2D.Double(22.0, 243.3));
 
 		image.setIcon(map2draw);
 		imagholder.add(image);
 		JPanel buttonholder = new JPanel();
 		JPanel plannerheading = new JPanel();
-		
-		//Add all important destination points to an array for displaying
+
+		// Add all important destination points to an array for displaying
 		String[] choices = new String[gps.getPoints().size()];
-		for(int i = 0; i < gps.getPoints().size(); i++) {
+		for (int i = 0; i < gps.getPoints().size(); i++) {
 			choices[i] = gps.getPoints().get(i).getName();
 		}
-		
+
 		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
 		JComboBox<String> planstart = new JComboBox<String>(plannerstart);
 		JComboBox<String> to = new JComboBox<String>(choices);
@@ -337,13 +352,10 @@ public class GUIrough {
 		todisplay.add(xtrabuttons, BorderLayout.WEST);
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
 		todisplay.add(imagholder, BorderLayout.NORTH);
-		
 
 		startlmfao.addActionListener(new tostartbutton());
-			
-			
 
-			//Fucking commit again
+		// Fucking commit again
 //			@Override
 //			public void actionPerformed(ActionEvent arg0) {
 //				
@@ -403,15 +415,14 @@ public class GUIrough {
 
 			}
 
-			
 		});
 
 		todisplay.pack();
 		this.hasstarted = true;
 		todisplay.setVisible(true);
 
-	}	
-	
+	}
+
 //		if (this.hasstarted == true) {
 //			this.current.dispose();
 //			this.hasstarted = false;
@@ -591,7 +602,6 @@ public class GUIrough {
 //		todisplay.setVisible(true);
 //
 //	}
-	
 
 	public GUIrough() {
 		if (this.hasstarted == true) {
@@ -601,7 +611,8 @@ public class GUIrough {
 		}
 
 		JFrame todisplay = new JFrame("Navigation System");
-		
+		todisplay.setPreferredSize(new Dimension(750, 750));
+
 		this.current = todisplay;
 		todisplay.setSize(500, 250);
 		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -639,20 +650,20 @@ public class GUIrough {
 // Just Testing stuff
 //		System.out.println(mapfin.getIconHeight());
 //		System.out.println(mapfin.getIconWidth());
-		//l
+		// l
 //		mainmap.drawpoints(new Point2D.Double(138.5, 40.0), new Point2D.Double(22.0, 243.3));
 
 		image.setIcon(map2draw);
 		imagholder.add(image);
 		JPanel buttonholder = new JPanel();
 		JPanel plannerheading = new JPanel();
-		
-		//Add all important destination points to an array for displaying
+
+		// Add all important destination points to an array for displaying
 		String[] choices = new String[gps.getPoints().size()];
-		for(int i = 0; i < gps.getPoints().size(); i++) {
+		for (int i = 0; i < gps.getPoints().size(); i++) {
 			choices[i] = gps.getPoints().get(i).getName();
 		}
-		
+
 		String[] plannerstart = { "I murdered", "Jeffrey Epstein" };
 		JComboBox<String> planstart = new JComboBox<String>(plannerstart);
 		JComboBox<String> to = new JComboBox<String>(choices);
@@ -706,13 +717,10 @@ public class GUIrough {
 		todisplay.add(imagholder, BorderLayout.NORTH);
 		this.storeddistance = "todisplaydistance";
 		this.storedtime = "todisplaytime";
-		
 
 		startlmfao.addActionListener(new tostartbutton());
-			
-			
 
-			//Fucking commit again
+		// Fucking commit again
 //			@Override
 //			public void actionPerformed(ActionEvent arg0) {
 //				
@@ -772,7 +780,6 @@ public class GUIrough {
 
 			}
 
-			
 		});
 
 		todisplay.pack();
@@ -790,62 +797,90 @@ public class GUIrough {
 			this.mainmap = new MapMain(this.mainmap).drawpoints(todo.get(i), todo.get(i + 1));
 
 		}
-		double tocon = (todo.size()*d_c_f);
+		double tocon = (todo.size() * d_c_f);
 		double conv = 4.656;
-		double tocont = (tocon*conv);
-		this.storeddistance = String.valueOf(tocon);
-		
-		this.storedtime = String.valueOf(tocont);
+		double tocont = (tocon * conv);
+		this.storeddistance = (String.valueOf(round2(tocon)));
+
+		this.storedtime = String.valueOf(round2(tocont));
 
 		this.GUIroughres();
 		this.mainmap = null;
 
 	}
+
 	public class tostartbutton implements ActionListener {
 
-		
-		
-		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String toChoiceStr = (String)to.getSelectedItem();
+			String toChoiceStr = (String) to.getSelectedItem();
 			String fromChoiceStr = (String) from.getSelectedItem();
-			
+			if (toChoiceStr.equals("Shadow Asylum Haunted House")
+					&& fromChoiceStr.equals("Shadow Asylum Haunted House")) {
+				JFrame spooky = new JFrame();
+				JPanel todiss = new JPanel();
+				Image spoo = null;
+				try {
+					spoo = ImageIO.read(new File("Images\\ignore.png"));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if (spoo != null) {
+					ImageIcon esteregg = new ImageIcon(spoo);
+					JLabel ester = new JLabel();
+					ester.setIcon(esteregg);
+					todiss.add(ester);
+					spooky.add(todiss,BorderLayout.NORTH);
+					spooky.pack();
+					spooky.setVisible(true);
+					try {
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					spooky.dispose();
+
+				}
+
+			}
+
 			if (toChoiceStr.equals(fromChoiceStr)) {
-			
+
 				System.out.println("Incorrect Arguments");
 				return;
-				
+
 			}
-			
+
 			Point toChoice = null;
 			Point fromChoice = null;
-			
-			
+
 			for (int i = 0; i < gps.getPoints().size(); i++) {
-				if (gps.getPoints().get(i).getName().equals(toChoiceStr)) toChoice = gps.getPoints().get(i);
-				if (gps.getPoints().get(i).getName().equals(fromChoiceStr)) fromChoice = gps.getPoints().get(i);
+				if (gps.getPoints().get(i).getName().equals(toChoiceStr))
+					toChoice = gps.getPoints().get(i);
+				if (gps.getPoints().get(i).getName().equals(fromChoiceStr))
+					fromChoice = gps.getPoints().get(i);
 			}
-			
+
 			if (fromChoice == null) {
 				System.out.println("From not found");
 				return;
 			}
-			
+
 			if (toChoice == null) {
 				System.out.println("From not found");
 				return;
 			}
 
-			
 			AStar algo = new AStar();
 			ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-			
+
 			System.out.println();
-			if(path.size() > 0) {
+			if (path.size() > 0) {
 				System.out.println("Path Found.");
 			}
-			
+
 			System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
 //			if(path.size() != 0) { System.out.println("Successful Route Found!     Beginning: " + path.get(0).getName() + "  End: " + path.get(path.size()-1).getName()); }
 //			//Print Path
@@ -854,13 +889,8 @@ public class GUIrough {
 //			}
 //			System.out.println(path.get(path.size()-1).getName());
 			update(path);
-			
-			
-			
-			
+
 		}
-
-
 
 	}
 
