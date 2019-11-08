@@ -796,10 +796,8 @@ public class GUIrough {
 		double conv = 4.656;
 		double tocont = (tocon*conv);
 		this.storeddistance = String.valueOf(tocon);
-		System.out.println(this.storeddistance);
 		
 		this.storedtime = String.valueOf(tocont);
-		System.out.println(this.storedtime);
 
 		this.GUIroughres();
 		this.mainmap = null;
