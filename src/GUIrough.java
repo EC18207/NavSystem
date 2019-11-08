@@ -219,9 +219,7 @@ public class GUIrough {
 		public BufferedImage drawpoints(Point in1, Point in2) {
 			g2.setColor(Color.GREEN);
 			g2.drawLine((int) in1.getX(), (int) in1.getY(), (int) in2.getX(), (int) in2.getY());
-			g2.setColor(Color.RED);
-
-			g2.fillOval((int) in2.getX(), (int) in2.getY(), 3, 3);
+			
 			return this.tomod;
 
 		}
