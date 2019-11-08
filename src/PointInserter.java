@@ -152,6 +152,13 @@ public class PointInserter {
 					String s = "X" + x + "Y" + y;
 					nodes.put(s, new Point(x,y,s));
 				} else {
+					int j = 0;
+					while(j < importantPoints.size()) {
+						if(importantPoints.get(j).getX() == x && importantPoints.get(j).getY() == y) {
+							System.out.println(importantPoints.get(j).getName() + " is within a box!");
+						}
+						j++;
+					}
 					flag = false;
 				}
 				

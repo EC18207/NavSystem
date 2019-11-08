@@ -32,6 +32,7 @@ public class AStar {
 				}
 			}
 			Node current = q.poll();
+			System.out.println("Current: " + current.point.getName() + "-" + current.point.getX() + "-" + current.point.getY());
 			boolean isDestination = current.point.getName().equals(to.getName());
 			if(isDestination) { flag = true; }
 			
