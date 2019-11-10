@@ -62,7 +62,7 @@ public class GUIrough {
 		}
 
 		public BufferedImage drawpoints(Point in1, Point in2) {
-			g2.setStroke(new BasicStroke(2));
+			g2.setStroke(new BasicStroke(3));
 			g2.setColor(Color.MAGENTA);
 			g2.drawLine((int) in1.getX(), (int) in1.getY(), (int) in2.getX(), (int) in2.getY());
 
