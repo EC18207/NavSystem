@@ -20,7 +20,7 @@ public class XMLCache {
 		MyPath newPath = new MyPath(from, to, path);
 		
 		try {
-			FileOutputStream fos = new FileOutputStream(new File("./cache.txt"));
+			FileOutputStream fos = new FileOutputStream(new File("./cache.xml"));
 			XMLEncoder xec = new XMLEncoder(fos);
 			xec.writeObject(newPath);
 			xec.close();
@@ -34,7 +34,7 @@ public class XMLCache {
 		
 		try {
 			
-			FileInputStream fis = new FileInputStream(new File("./cache.txt"));
+			FileInputStream fis = new FileInputStream(new File("./cache.xml"));
 			XMLDecoder xdc = new XMLDecoder(fis);
 			
 			while (xdc.readObject() != null) {
@@ -44,11 +44,11 @@ public class XMLCache {
 				}
 			}
 			
-			return new ArrayList<>();
+			return null;
 			
 		} catch(Exception e) {
 			
-			return new ArrayList<>();
+			return null;
 		
 		}
 		
