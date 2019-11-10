@@ -475,17 +475,24 @@ public class GUIrough {
 				return;
 			}
 
-			AStar algo = new AStar();
-			ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-
-			System.out.println();
-			if (path.size() > 0) {
-				System.out.println("Path Found.");
+			XMLCache cache = new XMLCache();
+			ArrayList<Point> temp = cache.findPath(fromChoice, toChoice);
+			if(temp != null) {
+				update(temp);
+			} else {
+				AStar algo = new AStar();
+				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
+				cache.writeNewPath(fromChoice, toChoice, path);
+	
+				System.out.println();
+				if (path.size() > 0) {
+					System.out.println("Path Found.");
+				}
+	
+				System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
+	
+				update(path);
 			}
-
-			System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
-
-			update(path);
 
 		}
 
