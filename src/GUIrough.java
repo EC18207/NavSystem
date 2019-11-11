@@ -41,8 +41,8 @@ public class GUIrough {
 	JComboBox to;
 	JComboBox from;
 	static double d_c_f = 0.007142857142857;
-	String storeddistance;
-	String storedtime;
+	JLabel dist;
+	JLabel time;
 	double pland;
 	double plant;
 	JTextField dd;
@@ -283,7 +283,9 @@ public class GUIrough {
 		JButton startbigboi = new JButton("Start Planner");
 		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
 		JLabel dist = new JLabel("todisplaydistance");
+		this.dist = dist;
 		JLabel time = new JLabel("todisplaytime");
+		this.time = time;
 		JLabel desd = new JLabel("Desired Distance(in miles):");
 		JLabel dest = new JLabel("Desired Time(in minutes):");
 		JLabel dis = new JLabel("Distance(in miles):");
@@ -322,8 +324,7 @@ public class GUIrough {
 		todisplay.add(xtrabuttons, BorderLayout.WEST);
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
 		todisplay.add(imagholder, BorderLayout.NORTH);
-		this.storeddistance = "todisplaydistance";
-		this.storedtime = "todisplaytime";
+		
 
 		startlmfao.addActionListener(new tostartbutton());
 
@@ -355,11 +356,19 @@ public class GUIrough {
 		double tocon = (todo.size() * d_c_f);
 		double conv = 4.656;
 		double tocont = (tocon * conv);
-		this.storeddistance = (String.valueOf(round2(tocon)));
+		String todisplaydistance = (String.valueOf(round2(tocon)));
 
-		this.storedtime = String.valueOf(round2(tocont));
+		String todisplaytime = String.valueOf(round2(tocont));
+		
+		this.dist.setText(todisplaydistance);
+		this.time.setText(todisplaytime);
+		
 		ImageIcon newdisplay = new ImageIcon(this.mainmap);
 		this.directimage.setIcon(newdisplay);
+		this.dist.revalidate();
+		this.dist.repaint();
+		this.time.revalidate();
+		this.time.repaint();
 		this.display.revalidate();
 		this.display.repaint();
 
