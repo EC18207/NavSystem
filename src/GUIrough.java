@@ -495,14 +495,14 @@ public class GUIrough {
 				return;
 			}
 
-			XMLCache cache = new XMLCache();
-			ArrayList<Point> temp = cache.findPath(fromChoice, toChoice);
-			if(temp != null) {
-				update(temp);
-			} else {
+			//XMLCache cache = new XMLCache();
+			//ArrayList<Point> temp = cache.findPath(fromChoice, toChoice);
+			//if(temp != null) {
+			//	update(temp);
+			//} else {
 				AStar algo = new AStar();
 				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-				cache.writeNewPath(fromChoice, toChoice, path);
+				//cache.writeNewPath(fromChoice, toChoice, path);
 	
 				System.out.println();
 				if (path.size() > 0) {
@@ -512,7 +512,7 @@ public class GUIrough {
 				System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
 	
 				update(path);
-			}
+			//}
 
 		}
 
