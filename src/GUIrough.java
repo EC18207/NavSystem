@@ -75,8 +75,8 @@ public class GUIrough {
 
 		public BufferedImage highpoints(Point in1) {
 			g2.setStroke(new BasicStroke(2));
-			g2.setColor(Color.GREEN);
-			g2.fillOval((int) in1.getX() - 2, (int) in1.getY() - 2, 5, 5);
+			g2.setColor(Color.CYAN);
+			g2.fillOval((int) in1.getX() - 4, (int) in1.getY() - 4, 8, 8);
 
 			return this.tomod;
 
@@ -85,7 +85,7 @@ public class GUIrough {
 		public BufferedImage highpointsstart(Point in1) {
 			g2.setStroke(new BasicStroke(2));
 			g2.setColor(Color.magenta);
-			g2.fillOval((int) in1.getX() - 2, (int) in1.getY() - 2, 5, 5);
+			g2.fillOval((int) in1.getX() - 4, (int) in1.getY() - 4, 8, 8);
 
 			return this.tomod;
 
