@@ -69,6 +69,7 @@ public class GUIrough {
 			g2.setStroke(new BasicStroke(3));
 			g2.setColor(Color.MAGENTA);
 			g2.drawLine((int) in1.getX(), (int) in1.getY(), (int) in2.getX(), (int) in2.getY());
+//			g2.fillOval((int)in1.x, (int)in1.y, 3, 3);
 
 			return this.tomod;
 
