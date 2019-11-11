@@ -1,5 +1,4 @@
 
-
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -49,6 +48,9 @@ public class GUIrough {
 	JTextField dd;
 	JTextField dt;
 	JComboBox startloc;
+	JPanel display;
+	JLabel directimage;
+	BufferedImage permanentmap;
 
 	public class MapMain {
 		Graphics g;
@@ -164,7 +166,7 @@ public class GUIrough {
 		JLabel time = new JLabel(this.storedtime);
 		JLabel desd = new JLabel("Desired Distance(in miles):");
 		JLabel dest = new JLabel("Desired Time(in minutes):");
-		JLabel dis = new JLabel("Distance(in miles)::");
+		JLabel dis = new JLabel("Distance(in miles):");
 		JLabel tim = new JLabel("Time(in minutes):");
 		JLabel tol = new JLabel("To:");
 		JLabel froml = new JLabel("From:");
@@ -215,6 +217,13 @@ public class GUIrough {
 	}
 
 	public GUIrough() {
+		try {
+			this.permanentmap = ImageIO.read(new File("Images\\MapImage.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		if (this.hasstarted == true) {
 			this.current.dispose();
 			this.hasstarted = false;
@@ -228,7 +237,9 @@ public class GUIrough {
 		todisplay.setSize(500, 250);
 		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel imagholder = new JPanel();
+		this.display = imagholder;
 		JLabel image = new JLabel();
+		this.directimage = image;
 		ImageIcon map2draw = null;
 		if (this.mainmap == null) {
 			BufferedImage mapfin = null;
@@ -333,7 +344,7 @@ public class GUIrough {
 
 	public void update(ArrayList<Point> todo) {
 		if (this.hasstarted == false || this.mainmap == null) {
-			this.GUIroughres();
+//			this.GUIroughres();
 
 		}
 		for (int i = 0; i < todo.size() - 1; i++) {
@@ -346,24 +357,33 @@ public class GUIrough {
 		this.storeddistance = (String.valueOf(round2(tocon)));
 
 		this.storedtime = String.valueOf(round2(tocont));
+		ImageIcon newdisplay = new ImageIcon(this.mainmap);
+		this.directimage.setIcon(newdisplay);
+		this.display.revalidate();
+		this.display.repaint();
 
-		this.GUIroughres();
-		this.mainmap = null;
+//		this.GUIroughres();
+		this.mainmap = this.permanentmap;
 
 	}
 	public void highlight(ArrayList<Point> todo) {
 		if (this.hasstarted == false || this.mainmap == null) {
-			this.GUIroughres();
+//			this.GUIroughres();
 
 		}
 		for (int i = 0; i < todo.size() - 1; i++) {
 			this.mainmap = new MapMain(this.mainmap).highpoints(todo.get(i));
 
 		}
+		ImageIcon newdisplay = new ImageIcon(this.mainmap);
+		this.directimage.setIcon(newdisplay);
+		this.display.revalidate();
+		this.display.repaint();
 		
 
-		this.GUIroughres();
-		this.mainmap = null;
+
+//		this.GUIroughres();
+		this.mainmap = this.permanentmap;
 
 	}
 	
@@ -492,3 +512,4 @@ public class GUIrough {
 	}
 
 }
+
