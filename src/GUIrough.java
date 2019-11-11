@@ -111,8 +111,10 @@ public class GUIrough {
 		todisplay.setPreferredSize(new Dimension(750, 750));
 
 		this.current = todisplay;
+		
 		todisplay.setSize(500, 250);
 		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		todisplay.getContentPane().setBackground(Color.black);
 		JPanel imagholder = new JPanel();
 		this.display = imagholder;
 		JLabel image = new JLabel();
@@ -296,7 +298,7 @@ public class GUIrough {
 					pland, plant);
 
 			if (possiblePaths.size() > 0) {
-				for (int i = 0; i < possiblePaths.size() - 1; i++) {
+				for (int i = 0; i < possiblePaths.size(); i++) {
 					System.out.print(possiblePaths.get(i).getName() + ", ");
 				}
 				System.out.print(possiblePaths.get(possiblePaths.size() - 1).getName());
