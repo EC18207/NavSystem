@@ -261,7 +261,7 @@ public class GUIrough {
 		this.mainmap = new MapMain(this.mainmap).highpointsstart(todo.get(0));
 
 		
-		for (int i = 1; i < todo.size() - 1; i++) {
+		for (int i = 1; i < todo.size(); i++) {
 			this.mainmap = new MapMain(this.mainmap).highpoints(todo.get(i));
 
 		}
@@ -298,16 +298,19 @@ public class GUIrough {
 					pland, plant);
 
 			if (possiblePaths.size() > 0) {
-				for (int i = 0; i < possiblePaths.size(); i++) {
+				for (int i = 0; i < possiblePaths.size()-1; i++) {
 					System.out.print(possiblePaths.get(i).getName() + ", ");
 				}
 				System.out.print(possiblePaths.get(possiblePaths.size() - 1).getName());
 			} else {
 				System.out.println("No possible paths with that distance/time!");
 			}
+			
 			System.out.println();
 			possiblePaths.add(0,gps.getMap().get(startLocation));
 			highlight(possiblePaths);
+			
+			
 
 		}
 
