@@ -51,8 +51,6 @@ public class GUIrough {
 	JPanel display;
 	JLabel directimage;
 	BufferedImage permanentmap;
-	
-	
 
 	public class MapMain {
 		Graphics g;
@@ -74,15 +72,24 @@ public class GUIrough {
 			return this.tomod;
 
 		}
+
 		public BufferedImage highpoints(Point in1) {
 			g2.setStroke(new BasicStroke(2));
 			g2.setColor(Color.GREEN);
-			g2.fillOval((int)in1.getX()-2, (int)in1.getY()-2, 5, 5);
+			g2.fillOval((int) in1.getX() - 2, (int) in1.getY() - 2, 5, 5);
 
 			return this.tomod;
 
 		}
 
+		public BufferedImage highpointsstart(Point in1) {
+			g2.setStroke(new BasicStroke(2));
+			g2.setColor(Color.magenta);
+			g2.fillOval((int) in1.getX() - 2, (int) in1.getY() - 2, 5, 5);
+
+			return this.tomod;
+
+		}
 	}
 
 	private static double round2(double value) {
@@ -90,8 +97,6 @@ public class GUIrough {
 		toround = toround.setScale(2, RoundingMode.HALF_UP);
 		return toround.doubleValue();
 	}
-
-
 
 	public GUIrough() {
 		try {
@@ -130,8 +135,6 @@ public class GUIrough {
 			map2draw = new ImageIcon((mainmap));
 			image.setIcon(map2draw);
 		}
-
-
 
 		image.setIcon(map2draw);
 		imagholder.add(image);
@@ -199,15 +202,10 @@ public class GUIrough {
 		todisplay.add(xtrabuttons, BorderLayout.WEST);
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
 		todisplay.add(imagholder, BorderLayout.NORTH);
-		
 
 		startlmfao.addActionListener(new tostartbutton());
 
-	
-
 		startbigboi.addActionListener(new planbutton());
-
-		
 
 		todisplay.pack();
 		this.hasstarted = true;
@@ -222,8 +220,7 @@ public class GUIrough {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
+
 		for (int i = 0; i < todo.size() - 1; i++) {
 			this.mainmap = new MapMain(this.mainmap).drawpoints(todo.get(i), todo.get(i + 1));
 
@@ -234,10 +231,10 @@ public class GUIrough {
 		String todisplaydistance = (String.valueOf(round2(tocon)));
 
 		String todisplaytime = String.valueOf(round2(tocont));
-		
+
 		this.dist.setText(todisplaydistance);
 		this.time.setText(todisplaytime);
-		
+
 		ImageIcon newdisplay = new ImageIcon(this.mainmap);
 		this.directimage.setIcon(newdisplay);
 		this.dist.revalidate();
@@ -250,18 +247,19 @@ public class GUIrough {
 //		this.GUIroughres();
 
 	}
+
 	public void highlight(ArrayList<Point> todo) {
-		
+
 		try {
 			this.mainmap = ImageIO.read(new File("Images\\MapImage.png"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		if (this.hasstarted == false || this.permanentmap == null) {
+		this.mainmap = new MapMain(this.mainmap).highpointsstart(todo.get(0));
 
-		}
-		for (int i = 0; i < todo.size() - 1; i++) {
+		
+		for (int i = 1; i < todo.size() - 1; i++) {
 			this.mainmap = new MapMain(this.mainmap).highpoints(todo.get(i));
 
 		}
@@ -269,55 +267,48 @@ public class GUIrough {
 		this.directimage.setIcon(newdisplay);
 		this.display.revalidate();
 		this.display.repaint();
-		
-
 
 //		this.GUIroughres();
 
 	}
-	
-	public class planbutton implements ActionListener{
+
+	public class planbutton implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String dist = dd.getText();
-			if(dist.equals("")) {
+			if (dist.equals("")) {
 				pland = 0;
-			}
-			else {
-			pland = Integer.parseInt(dist);
+			} else {
+				pland = Integer.parseInt(dist);
 			}
 			String tim = dt.getText();
-			if(tim.contentEquals("")) {
+			if (tim.contentEquals("")) {
 				plant = 0;
-			}
-			else {
+			} else {
 				plant = Integer.parseInt(tim);
 			}
-			
+
 			String startLocation = (String) startloc.getSelectedItem();
-			
-			
+
 			AStar algo = new AStar();
-			ArrayList<Point> possiblePaths = algo.findAllPossible(gps.getMap().get(startLocation), gps.getPoints(), pland, plant);
-			
-			if(possiblePaths.size() > 0) {
-				for(int i = 0; i < possiblePaths.size()-1; i++) {
+			ArrayList<Point> possiblePaths = algo.findAllPossible(gps.getMap().get(startLocation), gps.getPoints(),
+					pland, plant);
+
+			if (possiblePaths.size() > 0) {
+				for (int i = 0; i < possiblePaths.size() - 1; i++) {
 					System.out.print(possiblePaths.get(i).getName() + ", ");
 				}
-				System.out.print(possiblePaths.get(possiblePaths.size()-1).getName());
+				System.out.print(possiblePaths.get(possiblePaths.size() - 1).getName());
 			} else {
 				System.out.println("No possible paths with that distance/time!");
 			}
 			System.out.println();
-			
-			
-			
+			possiblePaths.add(0,gps.getMap().get(startLocation));
 			highlight(possiblePaths);
-			
-			
+
 		}
-		
+
 	}
 
 	public class tostartbutton implements ActionListener {
@@ -342,7 +333,7 @@ public class GUIrough {
 					JLabel ester = new JLabel();
 					ester.setIcon(esteregg);
 					todiss.add(ester);
-					spooky.add(todiss,BorderLayout.NORTH);
+					spooky.add(todiss, BorderLayout.NORTH);
 					spooky.pack();
 					spooky.setVisible(true);
 					try {
@@ -384,28 +375,27 @@ public class GUIrough {
 				return;
 			}
 
-			//XMLCache cache = new XMLCache();
-			//ArrayList<Point> temp = cache.findPath(fromChoice, toChoice);
-			//if(temp != null) {
-			//	update(temp);
-			//} else {
-				AStar algo = new AStar();
-				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-				//cache.writeNewPath(fromChoice, toChoice, path);
-	
-				System.out.println();
-				if (path.size() > 0) {
-					System.out.println("Path Found.");
-				}
-	
-				System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
-	
-				update(path);
-			//}
+			// XMLCache cache = new XMLCache();
+			// ArrayList<Point> temp = cache.findPath(fromChoice, toChoice);
+			// if(temp != null) {
+			// update(temp);
+			// } else {
+			AStar algo = new AStar();
+			ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
+			// cache.writeNewPath(fromChoice, toChoice, path);
+
+			System.out.println();
+			if (path.size() > 0) {
+				System.out.println("Path Found.");
+			}
+
+			System.out.println("From: " + fromChoice.getName() + "    To: " + toChoice.getName());
+
+			update(path);
+			// }
 
 		}
 
 	}
 
 }
-
