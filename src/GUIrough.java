@@ -51,6 +51,8 @@ public class GUIrough {
 	JPanel display;
 	JLabel directimage;
 	BufferedImage permanentmap;
+	
+	
 
 	public class MapMain {
 		Graphics g;
@@ -88,133 +90,133 @@ public class GUIrough {
 		return toround.doubleValue();
 	}
 
-	public void GUIroughres() {
-		if (this.hasstarted == true) {
-			this.current.dispose();
-			this.hasstarted = false;
-
-		}
-
-		JFrame todisplay = new JFrame("Navigation System");
-		todisplay.setPreferredSize(new Dimension(750, 750));
-
-		this.current = todisplay;
-		todisplay.setSize(500, 250);
-		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel imagholder = new JPanel();
-		JLabel image = new JLabel();
-		ImageIcon map2draw = null;
-		if (this.mainmap == null) {
-			BufferedImage mapfin = null;
-
-			try {
-				mapfin = ImageIO.read(new File("Images\\MapImage.png"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			// constructs bufferedimage, we then modify that and create an imageicon with
-			// it.
-//		try {
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
+//	public void GUIroughres() {
+//		if (this.hasstarted == true) {
+//			this.current.dispose();
+//			this.hasstarted = false;
+//
 //		}
-//		Point2D.Double test1 = new Point2D.Double(57.00, 138.32);
-//		Point2D.Double test2 = new Point2D.Double(157.00, 25.00);
-			this.mainmap = mapfin;
-		}
-
-//		mainmap.drawpoints(test1, test2);
-		if (mainmap != null) {
-			map2draw = new ImageIcon((mainmap));
-			image.setIcon(map2draw);
-		}
-
-// Just Testing stuff
-//		System.out.println(mapfin.getIconHeight());
-//		System.out.println(mapfin.getIconWidth());
-		// l
-//		mainmap.drawpoints(new Point2D.Double(138.5, 40.0), new Point2D.Double(22.0, 243.3));
-
-		image.setIcon(map2draw);
-		imagholder.add(image);
-		JPanel buttonholder = new JPanel();
-		JPanel plannerheading = new JPanel();
-
-		// Add all important destination points to an array for displaying
-		String[] choices = new String[gps.getPoints().size()];
-		for (int i = 0; i < gps.getPoints().size(); i++) {
-			choices[i] = gps.getPoints().get(i).getName();
-		}
-
-		JComboBox<String> planstart = new JComboBox<String>(choices);
-		this.startloc = planstart;
-		JComboBox<String> to = new JComboBox<String>(choices);
-		this.to = to;
-		JComboBox<String> from = new JComboBox<String>(choices);
-		this.from = from;
-		JTextField dd = new JTextField();
-		this.dd = dd;
-		JTextField dt = new JTextField();
-		this.dt = dt;
-		JButton startlmfao = new JButton("Start individual trip");
-		JButton startbigboi = new JButton("Start Planner");
-		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
-		JLabel dist = new JLabel(this.storeddistance);
-		JLabel time = new JLabel(this.storedtime);
-		JLabel desd = new JLabel("Desired Distance(in miles):");
-		JLabel dest = new JLabel("Desired Time(in minutes):");
-		JLabel dis = new JLabel("Distance(in miles):");
-		JLabel tim = new JLabel("Time(in minutes):");
-		JLabel tol = new JLabel("To:");
-		JLabel froml = new JLabel("From:");
-		JLabel nulll1 = new JLabel("");
-		JLabel nulll2 = new JLabel("");
-		JLabel nulll3 = new JLabel("");
-		JLabel nulll4 = new JLabel("");
-		JLabel nulll5 = new JLabel("");
-		plannerheading.add(header);
-		JPanel xtrabuttons = new JPanel();
-		xtrabuttons.add(startlmfao);
-		xtrabuttons.add(startbigboi);
-		buttonholder.setLayout(new GridLayout(3, 7));
-		buttonholder.add(tol);
-		buttonholder.add(to);
-		buttonholder.add(dis);
-		buttonholder.add(dist);
-		buttonholder.add(nulll1);
-		buttonholder.add(planstart);
-		buttonholder.add(nulll2);
-		buttonholder.add(nulll3);
-		buttonholder.add(nulll4);
-		buttonholder.add(nulll5);
-		buttonholder.add(desd);
-		buttonholder.add(dd);
-		buttonholder.add(froml);
-		buttonholder.add(from);
-		buttonholder.add(tim);
-		buttonholder.add(time);
-		buttonholder.add(dest);
-		buttonholder.add(dt);
-		todisplay.add(plannerheading, BorderLayout.EAST);
-		todisplay.add(xtrabuttons, BorderLayout.WEST);
-		todisplay.add(buttonholder, BorderLayout.SOUTH);
-		todisplay.add(imagholder, BorderLayout.NORTH);
-
-		startlmfao.addActionListener(new tostartbutton());
-
-
-		startbigboi.addActionListener(new planbutton());
-
-			
-
-		todisplay.pack();
-		this.hasstarted = true;
-		todisplay.setVisible(true);
-
-	}
+//
+//		JFrame todisplay = new JFrame("Navigation System");
+//		todisplay.setPreferredSize(new Dimension(750, 750));
+//
+//		this.current = todisplay;
+//		todisplay.setSize(500, 250);
+//		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		JPanel imagholder = new JPanel();
+//		JLabel image = new JLabel();
+//		ImageIcon map2draw = null;
+//		if (this.mainmap == null) {
+//			BufferedImage mapfin = null;
+//
+//			try {
+//				mapfin = ImageIO.read(new File("Images\\MapImage.png"));
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//			// constructs bufferedimage, we then modify that and create an imageicon with
+//			// it.
+////		try {
+////		} catch (IOException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		}
+////		Point2D.Double test1 = new Point2D.Double(57.00, 138.32);
+////		Point2D.Double test2 = new Point2D.Double(157.00, 25.00);
+//			this.mainmap = mapfin;
+//		}
+//
+////		mainmap.drawpoints(test1, test2);
+//		if (mainmap != null) {
+//			map2draw = new ImageIcon((mainmap));
+//			image.setIcon(map2draw);
+//		}
+//
+//// Just Testing stuff
+////		System.out.println(mapfin.getIconHeight());
+////		System.out.println(mapfin.getIconWidth());
+//		// l
+////		mainmap.drawpoints(new Point2D.Double(138.5, 40.0), new Point2D.Double(22.0, 243.3));
+//
+//		image.setIcon(map2draw);
+//		imagholder.add(image);
+//		JPanel buttonholder = new JPanel();
+//		JPanel plannerheading = new JPanel();
+//
+//		// Add all important destination points to an array for displaying
+//		String[] choices = new String[gps.getPoints().size()];
+//		for (int i = 0; i < gps.getPoints().size(); i++) {
+//			choices[i] = gps.getPoints().get(i).getName();
+//		}
+//
+//		JComboBox<String> planstart = new JComboBox<String>(choices);
+//		this.startloc = planstart;
+//		JComboBox<String> to = new JComboBox<String>(choices);
+//		this.to = to;
+//		JComboBox<String> from = new JComboBox<String>(choices);
+//		this.from = from;
+//		JTextField dd = new JTextField();
+//		this.dd = dd;
+//		JTextField dt = new JTextField();
+//		this.dt = dt;
+//		JButton startlmfao = new JButton("Start individual trip");
+//		JButton startbigboi = new JButton("Start Planner");
+//		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
+//		JLabel dist = new JLabel(this.storeddistance);
+//		JLabel time = new JLabel(this.storedtime);
+//		JLabel desd = new JLabel("Desired Distance(in miles):");
+//		JLabel dest = new JLabel("Desired Time(in minutes):");
+//		JLabel dis = new JLabel("Distance(in miles):");
+//		JLabel tim = new JLabel("Time(in minutes):");
+//		JLabel tol = new JLabel("To:");
+//		JLabel froml = new JLabel("From:");
+//		JLabel nulll1 = new JLabel("");
+//		JLabel nulll2 = new JLabel("");
+//		JLabel nulll3 = new JLabel("");
+//		JLabel nulll4 = new JLabel("");
+//		JLabel nulll5 = new JLabel("");
+//		plannerheading.add(header);
+//		JPanel xtrabuttons = new JPanel();
+//		xtrabuttons.add(startlmfao);
+//		xtrabuttons.add(startbigboi);
+//		buttonholder.setLayout(new GridLayout(3, 7));
+//		buttonholder.add(tol);
+//		buttonholder.add(to);
+//		buttonholder.add(dis);
+//		buttonholder.add(dist);
+//		buttonholder.add(nulll1);
+//		buttonholder.add(planstart);
+//		buttonholder.add(nulll2);
+//		buttonholder.add(nulll3);
+//		buttonholder.add(nulll4);
+//		buttonholder.add(nulll5);
+//		buttonholder.add(desd);
+//		buttonholder.add(dd);
+//		buttonholder.add(froml);
+//		buttonholder.add(from);
+//		buttonholder.add(tim);
+//		buttonholder.add(time);
+//		buttonholder.add(dest);
+//		buttonholder.add(dt);
+//		todisplay.add(plannerheading, BorderLayout.EAST);
+//		todisplay.add(xtrabuttons, BorderLayout.WEST);
+//		todisplay.add(buttonholder, BorderLayout.SOUTH);
+//		todisplay.add(imagholder, BorderLayout.NORTH);
+//
+//		startlmfao.addActionListener(new tostartbutton());
+//
+//
+//		startbigboi.addActionListener(new planbutton());
+//
+//			
+//
+//		todisplay.pack();
+//		this.hasstarted = true;
+//		todisplay.setVisible(true);
+//
+//	}
 
 	public GUIrough() {
 		try {
@@ -223,12 +225,7 @@ public class GUIrough {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
-		if (this.hasstarted == true) {
-			this.current.dispose();
-			this.hasstarted = false;
-
-		}
+		this.mainmap = this.permanentmap;
 
 		JFrame todisplay = new JFrame("Navigation System");
 		todisplay.setPreferredSize(new Dimension(750, 750));
@@ -343,10 +340,14 @@ public class GUIrough {
 	}
 
 	public void update(ArrayList<Point> todo) {
-		if (this.hasstarted == false || this.mainmap == null) {
-//			this.GUIroughres();
-
+		try {
+			this.mainmap = ImageIO.read(new File("Images\\MapImage.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+		
+		
 		for (int i = 0; i < todo.size() - 1; i++) {
 			this.mainmap = new MapMain(this.mainmap).drawpoints(todo.get(i), todo.get(i + 1));
 
@@ -363,12 +364,17 @@ public class GUIrough {
 		this.display.repaint();
 
 //		this.GUIroughres();
-		this.mainmap = this.permanentmap;
 
 	}
 	public void highlight(ArrayList<Point> todo) {
-		if (this.hasstarted == false || this.mainmap == null) {
-//			this.GUIroughres();
+		
+		try {
+			this.mainmap = ImageIO.read(new File("Images\\MapImage.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		if (this.hasstarted == false || this.permanentmap == null) {
 
 		}
 		for (int i = 0; i < todo.size() - 1; i++) {
@@ -383,7 +389,6 @@ public class GUIrough {
 
 
 //		this.GUIroughres();
-		this.mainmap = this.permanentmap;
 
 	}
 	
