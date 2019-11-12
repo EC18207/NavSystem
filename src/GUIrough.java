@@ -376,8 +376,9 @@ public class GUIrough {
 			AStar algo = new AStar();
 			ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
 			// cache.writeNewPath(fromChoice, toChoice, path);
-
-			update(path);
+			if(path.size() > 0) {
+				update(path);
+			}
 			// }
 
 		}
