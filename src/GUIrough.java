@@ -175,7 +175,7 @@ public class GUIrough {
 		JLabel tim = new JLabel("Time(in minutes):");
 		JLabel tol = new JLabel("To:");
 		JLabel froml = new JLabel("From:");
-		JLabel nulll1 = new JLabel("");
+		JLabel nulll1 = new JLabel("Start Location");
 		JLabel nulll2 = new JLabel("");
 		JLabel nulll3 = new JLabel("");
 		JLabel nulll4 = new JLabel("");
