@@ -5,95 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-//import java.beans.XMLEncoder;
-//import java.beans.XMLDecoder;
-//import java.io.File;
-//import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.io.FileInputStream;
-//import java.io.FileOutputStream;
-//
-//
-//public class XMLCache {
-//	
-//	public static void main(String[] args) {
-//		testXML();
-//	}
-//	
-//	private static void testXML() {
-//
-//		try {
-//			XMLEncoder xec = new XMLEncoder(new FileOutputStream(new File("./cache.xml")));
-//			HashMap<String, Integer> hash = new HashMap<String, Integer>();
-//			hash.put("Hello", 12);
-//			xec.writeObject(hash);
-//			
-//			XMLDecoder xdc = new XMLDecoder(new FileInputStream(new File("./cache.xml")));
-//			
-//		} catch (Exception e) {
-//			System.out.println("Something wrong");
-//		}
-//		
-//	}
-//
-//	public void writeNewPath(Point from, Point to, ArrayList<Point> path) {
-//		
-////		try {
-////			MyPath newPath = new MyPath(from, to, path);
-////			String pathString = newPath.toString();
-////			FileOutputStream fos = new FileOutputStream(new File("./cache.xml"));
-////			XMLEncoder xec = new XMLEncoder(fos);
-////			xec.writeObject(pathString);
-////			xec.close();
-////			fos.close();
-////		} catch(Exception e) {
-////			System.out.println("Nope");
-////		}
-//		
-//		try {
-//			XMLEncoder xec = new XMLEncoder(new FileOutputStream(new File("./cache.xml")));
-//			xec.writeObject(new MyPath(from, to, path));
-//			xec.writeObject()
-//		} catch (Exception e) {
-//			System.out.println("Something wrong");
-//		}
-//		
-//	}
-//	
-//	public ArrayList<Point> findPath(Point from, Point to) {
-//		
-//		try {
-//			
-//			FileInputStream fis = new FileInputStream(new File("./cache.xml"));
-//			XMLDecoder xdc = new XMLDecoder(fis);
-//			
-//			while (xdc.readObject() != null) {
-//				
-//				MyPath p = (MyPath) xdc.readObject();
-//				if (p.getFrom().equals(from) && p.getTo().equals(to)) {
-//					return p.getPath();
-//				}
-//				if (p.getFrom().equals(to) && p.getTo().equals(from)) {
-//					return p.getPath();
-//				
-//				}
-//			}
-//			fis.close();
-//			xdc.close();
-//			
-//			return null;
-//			
-//		} catch(Exception e) {
-//			
-//			return null;
-//		
-//		}
-//		
-//	}
-//	
-//}
-
-
 public class XMLCache {
 	
 	public ArrayList<Point> getPathIfPossible(Point from, Point to) {
@@ -121,10 +32,10 @@ public class XMLCache {
 		
 	}
 	
-//	public void clearCache() {
-//		File cache = new File("./cache.xml");
-//		cache.delete();
-//	}
+	public void clearCache() {
+		File cache = new File("./cache.xml");
+		cache.delete();
+	}
 	
 	public void addPath(Point from, Point to, ArrayList<Point> path) {
 		
