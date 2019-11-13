@@ -349,8 +349,7 @@ public class GUIrough {
 
 			String startLocation = (String) startloc.getSelectedItem();
 
-			AStar algo = new AStar();
-			ArrayList<Point> possiblePaths = algo.findAllPossible(gps.getMap().get(startLocation), gps.getPoints(),
+			ArrayList<Point> possiblePaths = gps.findAllPossible(gps.getMap().get(startLocation), gps.getPoints(),
 					pland, plant);
 
 			possiblePaths.add(0, gps.getMap().get(startLocation));
@@ -426,8 +425,7 @@ public class GUIrough {
 			if (temp != null) {
 				update(temp);
 			} else {
-				AStar algo = new AStar();
-				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
+				ArrayList<Point> path = gps.findShortestPath(fromChoice, toChoice);
 				if (path.size() > 0) {
 					update(path);
 					cache.addPath(fromChoice, toChoice, path);
