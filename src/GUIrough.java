@@ -410,18 +410,18 @@ public class GUIrough {
 				return;
 			}
 
-			XMLCache cache = new XMLCache();
-			ArrayList<Point> temp = cache.getPathIfPossible(fromChoice, toChoice);
-			if (temp != null) {
-				update(temp);
-			} else {
+			//XMLCache cache = new XMLCache();
+			//ArrayList<Point> temp = cache.getPathIfPossible(fromChoice, toChoice);
+			//if (temp != null) {
+			//	update(temp);
+			//} else {
 				AStar algo = new AStar();
 				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-				cache.addPath(fromChoice, toChoice, path);
-				if (path.size() > 0) {
+				//cache.addPath(fromChoice, toChoice, path);
+				//if (path.size() > 0) {
 					update(path);
-				}
-			}
+				//}
+			//}
 
 		}
 
