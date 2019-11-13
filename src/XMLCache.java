@@ -77,7 +77,6 @@ public class XMLCache {
 			try {
 				XMLEncoder xec = new XMLEncoder(new FileOutputStream(fos));
 				xec.writeObject(paths);
-				System.out.println(paths);
 				
 				xec.close();
 			} 
