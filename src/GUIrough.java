@@ -65,7 +65,22 @@ public class GUIrough {
 			this.g = map.getGraphics();
 			this.g2 = (Graphics2D) g;
 		}
+		
+		public BufferedImage drawstart(Point in1) {
+			g2.setColor(Color.green);
+			
+			g2.fillOval((int) in1.getX() - 4, (int) in1.getY() - 4, 8, 8);
+			return this.tomod;
 
+		}
+		
+		public BufferedImage drawstop(Point in1) {
+			g2.setColor(Color.blue);
+			
+			g2.fillOval((int) in1.getX() - 4, (int) in1.getY() - 4, 8, 8);
+			return this.tomod;
+
+		}
 		public BufferedImage drawpoints(Point in1, Point in2) {
 			g2.setStroke(new BasicStroke(3));
 			g2.setColor(Color.MAGENTA);
@@ -268,6 +283,10 @@ public class GUIrough {
 			this.mainmap = new MapMain(this.mainmap).drawpoints(todo.get(i), todo.get(i + 1));
 
 		}
+		this.mainmap = new MapMain(this.mainmap).drawstart(todo.get(0));
+		this.mainmap = new MapMain(this.mainmap).drawstop(todo.get(todo.size()-1));
+
+		
 		double tocon = (todo.size() * d_c_f);
 		double conv = 4.656;
 		double tocont = (tocon * conv);
@@ -343,6 +362,7 @@ public class GUIrough {
 
 			possiblePaths.add(0, gps.getMap().get(startLocation));
 			highlight(possiblePaths);
+			
 
 		}
 
