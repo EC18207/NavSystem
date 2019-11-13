@@ -30,7 +30,7 @@ public class DescFileReader {
 			while(i < line.length() && count < 2) {
 				if(line.charAt(i) == ',') {
 					if(count == 0) {
-						if(!substring.equals(this.loc)) { break; }
+						if(!substring.toLowerCase().equals(this.loc.toLowerCase())) { break; }
 						substring = substring + " -   ";
 						count++;
 						i++;
