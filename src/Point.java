@@ -68,7 +68,7 @@ public class Point extends Point2D.Double {
 	}
 
 	
-	//DoubleVal contains the cost between nodes. A double variable is stored.
+	//DoubleVal contains the cost between nodes. A double variable is stored. 
 	public class DoubleVal {
 
 		double val = 0;
