@@ -100,7 +100,7 @@ public class GUIrough {
 	}
 
 	public GUIrough() {
-		Color okred = new Color(201,4,4);
+		Color okred = new Color(201, 4, 4);
 		try {
 			this.permanentmap = ImageIO.read(new File("Images\\MapImage.png"));
 		} catch (IOException e1) {
@@ -195,15 +195,13 @@ public class GUIrough {
 		JComboBox<String> planchoice = new JComboBox<String>();
 		this.planchoice = planchoice;
 
-		
-		
 //		plannerheading.add(header);
 //		JPanel xtrabuttons = new JPanel();
-		
+
 //		xtrabuttons.add(startlmfao);
 //		xtrabuttons.add(startbigboi);
-		
-		buttonholder.setLayout(new GridLayout(0,6));
+
+		buttonholder.setLayout(new GridLayout(0, 6));
 		buttonholder.add(singhead);
 		buttonholder.add(nulll7);
 		buttonholder.add(nulll8);
@@ -234,7 +232,6 @@ public class GUIrough {
 		buttonholder.add(time);
 		buttonholder.add(dest);
 		buttonholder.add(dt);
-
 
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
 		todisplay.add(imagholder, BorderLayout.CENTER);
@@ -304,7 +301,7 @@ public class GUIrough {
 			choices[i] = possiblechoices.get(i).getName();
 			this.planchoice.addItem(choices[i]);
 		}
-		
+
 		this.display.revalidate();
 		this.display.repaint();
 
@@ -402,19 +399,19 @@ public class GUIrough {
 				return;
 			}
 
-			//XMLCache cache = new XMLCache();
-			//ArrayList<Point> temp = cache.getPathIfPossible(fromChoice, toChoice);
-			//if (temp != null) {
-			//	update(temp);
-			//} else {
-				AStar algo = new AStar();
-				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-				System.out.println("Path size: " + path.size());
-				//cache.addPath(fromChoice, toChoice, path);
-				//if (path.size() > 0) {
-					update(path);
-				//}
-			//}
+			// XMLCache cache = new XMLCache();
+			// ArrayList<Point> temp = cache.getPathIfPossible(fromChoice, toChoice);
+			// if (temp != null) {
+			// update(temp);
+			// } else {
+			AStar algo = new AStar();
+			ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
+			System.out.println("Path size: " + path.size());
+			// cache.addPath(fromChoice, toChoice, path);
+			// if (path.size() > 0) {
+			update(path);
+			// }
+			// }
 
 		}
 
