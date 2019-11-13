@@ -439,7 +439,6 @@ public class GUIrough {
 			} else {
 				AStar algo = new AStar();
 				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-				cache.addPath(fromChoice, toChoice, path);
 				if (path.size() > 0) {
 					update(path);
 					DescFileReader dr = new DescFileReader(toChoice.getName());
@@ -447,6 +446,7 @@ public class GUIrough {
 					descripl.setText(description);
 					descholer.revalidate();
 					descholer.repaint();
+					cache.addPath(fromChoice, toChoice, path);
 				}
 			}
 
