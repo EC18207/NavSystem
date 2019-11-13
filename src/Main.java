@@ -8,7 +8,7 @@ public class Main {
 		
 		System.out.println("Started Program.");
 		
-		GUIrough gui = new GUIrough();
+		GUI gui = new GUI();
 
 		
 
