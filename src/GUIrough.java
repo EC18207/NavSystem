@@ -40,7 +40,7 @@ public class GUIrough {
 	GPS gps = new GPS();
 	JComboBox to;
 	JComboBox from;
-	static double d_c_f = 0.0058823529411764705; // old conversion: 0.007142857142857
+	static double d_c_f = 0.0058823529411764705;
 	JLabel dist;
 	JLabel time;
 	double pland;
