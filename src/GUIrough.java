@@ -34,6 +34,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class GUIrough {
+	//This stores the elements of the GUI that need to be edited and refreshed
 	BufferedImage mainmap = null;
 	boolean hasstarted = false;
 	JFrame current = null;
@@ -57,6 +58,7 @@ public class GUIrough {
 	XMLCache cache = new XMLCache();
 
 	public class MapMain {
+		//This class
 		Graphics g;
 		Graphics2D g2;
 		BufferedImage tomod;

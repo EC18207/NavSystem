@@ -7,64 +7,59 @@ import java.util.HashMap;
 import javax.imageio.ImageIO;
 
 public class NodeInserter {
-	
+
 	HashMap<String, Point> nodes = new HashMap<String, Point>();
 	ArrayList<Point> importantPoints;
-	
+
 	public BufferedImage img = null;
 	String imageDirectory = "Images\\MapImageReadingFile.png";
-	
+
 	String fileDirectory = "MapBlock\\Coordinates.txt";
-	
+
 	public NodeInserter() {
 		File f = new File(imageDirectory);
 		try {
 			img = ImageIO.read(f);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(img != null) {
+		if (img != null) {
 			completeMap();
 		}
 	}
-	
+
 	public void completeMap() {
 		FileReader r = new FileReader();
-		
+
 		File t = new File(fileDirectory);
-		
+
 		r.fileReadIn(t);
-		
+
 		importantPoints = r.getPoints();
-		
+
 		insertNodes(importantPoints);
-		
-//		for(int i = 0; i < importantPoints.size(); i++) {
-//			System.out.println("Node: " + importantPoints.get(i).getName() + "              List: " + importantPoints.get(i).attachedPointsToString());
-//		}
 
 	}
- 
+
 	public void insertNodes(ArrayList<Point> points) {
-				
+
 		fillMap();
-		
+
 		connectMap();
-		
+
 		placeImportantPoints(points);
-		
+
 	}
-	
+
 	public void placeImportantPoints(ArrayList<Point> points) {
-		for(int i = 0; i < points.size(); i++) {
+		for (int i = 0; i < points.size(); i++) {
 			Point temp = points.get(0);
 			int xval = (int) temp.x;
 			int yval = (int) temp.y;
 			String s = "X" + xval + "Y" + yval;
-			
+
 			Point nodeInMap = nodes.get(s);
-			if(nodeInMap != null) {
+			if (nodeInMap != null) {
 				nodes.remove(s);
 				nodeInMap.setName(temp.getName());
 				nodes.put(temp.getName(), nodeInMap);
@@ -76,27 +71,27 @@ public class NodeInserter {
 			}
 		}
 	}
-	
+
 	public void connectMap() {
 		int x = 0;
 		int y = 0;
-		
-		while(x < img.getWidth()) {
-			
-			for(y = 0; y < img.getHeight(); y++) {
-				
+
+		while (x < img.getWidth()) {
+
+			for (y = 0; y < img.getHeight(); y++) {
+
 				String s = "X" + x + "Y" + y;
 				Point node = nodes.get(s);
-				if(node != null) {
-					String topS = "X" + (x) + "Y" + (y-1);
-					String rightS = "X" + (x+1) + "Y" + (y);
-					String leftS = "X" + (x-1) + "Y" + (y);
-					String bottomS = "X" + (x) + "Y" + (y+1);
-					String topLeftS = "X" + (x-1) + "Y" + (y-1);
-					String topRightS = "X" + (x+1) + "Y" + (y-1);
-					String bottomLeftS = "X" + (x-1) + "Y" + (y+1);
-					String bottomRightS = "X" + (x+1) + "Y" + (y+1);
-					
+				if (node != null) {
+					String topS = "X" + (x) + "Y" + (y - 1);
+					String rightS = "X" + (x + 1) + "Y" + (y);
+					String leftS = "X" + (x - 1) + "Y" + (y);
+					String bottomS = "X" + (x) + "Y" + (y + 1);
+					String topLeftS = "X" + (x - 1) + "Y" + (y - 1);
+					String topRightS = "X" + (x + 1) + "Y" + (y - 1);
+					String bottomLeftS = "X" + (x - 1) + "Y" + (y + 1);
+					String bottomRightS = "X" + (x + 1) + "Y" + (y + 1);
+
 					Point top = nodes.get(topS);
 					Point right = nodes.get(rightS);
 					Point left = nodes.get(leftS);
@@ -105,82 +100,75 @@ public class NodeInserter {
 					Point topR = nodes.get(topRightS);
 					Point bottomL = nodes.get(bottomLeftS);
 					Point bottomR = nodes.get(bottomRightS);
-					
-					if(top != null) {
+
+					if (top != null) {
 						node.addPt(top, 1);
 					}
-					if(right != null) {
+					if (right != null) {
 						node.addPt(right, 1);
-					} 
-					if(left != null) {
+					}
+					if (left != null) {
 						node.addPt(left, 1);
-					} 
-					if(bottom != null) {
+					}
+					if (bottom != null) {
 						node.addPt(bottom, 1);
-					} 
-					if(topL != null) {
+					}
+					if (topL != null) {
 						node.addPt(topL, 1.414);
-						//node.addPt(topL, Math.sqrt(2));
-					} 
-					if(topR != null) {
+					}
+					if (topR != null) {
 						node.addPt(topR, 1.414);
-						//node.addPt(topR, Math.sqrt(2));
-					} 
-					if(bottomL != null) {
+					}
+					if (bottomL != null) {
 						node.addPt(bottomL, 1.414);
-						//node.addPt(bottomL, Math.sqrt(2));
-					} 
-					if(bottomR != null) {
+					}
+					if (bottomR != null) {
 						node.addPt(bottomR, 1.414);
-						//node.addPt(bottomR, Math.sqrt(2));
 					}
 				}
-				
+
 			}
-			
+
 			x++;
-			
+
 		}
 	}
-	
+
 	public void fillMap() {
-		//width: 620
-		//height: 531
+
 		int x = 0;
 		int y = 0;
-		
-		//Insert Nodes
-		while(x < img.getWidth()) {
-			
-			for(y = 0; y < img.getHeight(); y++) {
-				
+
+		while (x < img.getWidth()) {
+
+			for (y = 0; y < img.getHeight(); y++) {
+
 				int color = img.getRGB(x, y);
 				int red = (color & 0x00ff0000) >> 16;
 				int green = (color & 0x0000ff00) >> 8;
 				int blue = (color & 0x000000ff);
-				
+
 				boolean black = (red < 5) && (green < 5) && (blue < 5);
-				
-				if(black) {
+
+				if (black) {
 					String s = "X" + x + "Y" + y;
-					nodes.put(s, new Point(x,y,s));
+					nodes.put(s, new Point(x, y, s));
 				}
-				
-				
+
 			}
-			
+
 			x++;
-			
+
 		}
-		
+
 	}
-	
+
 	public HashMap<String, Point> getNodes() {
 		return nodes;
 	}
-	
+
 	public ArrayList<Point> getImportantPoints() {
 		return importantPoints;
 	}
-	
+
 }
