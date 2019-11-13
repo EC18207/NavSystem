@@ -52,6 +52,8 @@ public class GUIrough {
 	JLabel directimage;
 	BufferedImage permanentmap;
 	private JComboBox<String> planchoice;
+	private JPanel descholer;
+	private JLabel description;
 
 	public class MapMain {
 		Graphics g;
@@ -115,7 +117,7 @@ public class GUIrough {
 
 		todisplay.setSize(500, 250);
 		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		todisplay.getContentPane().setBackground(okred);
+		todisplay.getContentPane().setBackground(Color.black);
 		JPanel imagholder = new JPanel();
 		imagholder.setBackground(Color.BLACK);
 		this.display = imagholder;
@@ -232,9 +234,17 @@ public class GUIrough {
 		buttonholder.add(time);
 		buttonholder.add(dest);
 		buttonholder.add(dt);
+		JPanel descholder = new JPanel();
+		JLabel description = new JLabel("");
+		this.description = description;
+		descholder.add(description);
+		this.descholer = descholder;
+		this.descholer.setBackground(Color.black);
+		
 
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
-		todisplay.add(imagholder, BorderLayout.CENTER);
+		todisplay.add(this.descholer,BorderLayout.EAST);
+		todisplay.add(imagholder, BorderLayout.WEST);
 
 		startlmfao.addActionListener(new tostartbutton());
 
