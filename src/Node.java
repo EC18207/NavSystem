@@ -1,4 +1,4 @@
-
+/* Creates a node used for A* calculations*/
 public class Node {
 
 	Point point = null;

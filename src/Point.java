@@ -1,6 +1,6 @@
 import java.awt.geom.Point2D;
 import java.util.HashMap;
-
+/* Creates a point that is read in from a text file of places of interest*/ 
 public class Point extends Point2D.Double {
 
 	private boolean pointOfInterest;
