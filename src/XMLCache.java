@@ -52,7 +52,6 @@ public class XMLCache {
 		} 
 		
 		catch(Exception e) {
-			System.out.println("Cache File not found");
 			return null;
 		}
 		
@@ -82,7 +81,6 @@ public class XMLCache {
 			} 
 			
 			catch(Exception e) {
-				System.out.println("Cache File not found");
 			}
 			
 		} 
@@ -103,7 +101,6 @@ public class XMLCache {
 			} 
 			
 			catch(Exception e) {
-				System.out.println("Cache File not found");
 			}
 			
 		}
