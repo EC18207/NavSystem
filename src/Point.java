@@ -9,7 +9,7 @@ public class Point extends Point2D.Double {
 
 	public Point() {
 	}
-	
+
 	// Default point constructor for unimportant points
 	public Point(int x, int y) {
 		super(x, y);
@@ -67,4 +67,23 @@ public class Point extends Point2D.Double {
 		super.y = y;
 	}
 
+	
+	//DoubleVal contains the cost between nodes. A double variable is stored.
+	public class DoubleVal {
+
+		double val = 0;
+
+		public DoubleVal(double value) {
+			this.val = value;
+		}
+
+		public void setVal(double value) {
+			this.val = value;
+		}
+
+		public double getVal() {
+			return this.val;
+		}
+
+	}
 }
