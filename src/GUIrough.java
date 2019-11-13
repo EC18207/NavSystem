@@ -431,8 +431,7 @@ public class GUIrough {
 					cache.addPath(fromChoice, toChoice, path);
 				}
 			}
-			DescFileReader dr = new DescFileReader(toChoice.getName());
-			String description = dr.getDescription();
+			String description = gps.getDescription(toChoice.getName());
 			descripl.setText(description);
 			descholer.revalidate();
 			descholer.repaint();
