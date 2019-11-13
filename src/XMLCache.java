@@ -121,10 +121,10 @@ public class XMLCache {
 		
 	}
 	
-	public void clearCache() {
-		File cache = new File("./cache.xml");
-		cache.delete();
-	}
+//	public void clearCache() {
+//		File cache = new File("./cache.xml");
+//		cache.delete();
+//	}
 	
 	public void addPath(Point from, Point to, ArrayList<Point> path) {
 		
