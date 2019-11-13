@@ -54,6 +54,7 @@ public class GUIrough {
 	private JComboBox<String> planchoice;
 	private JPanel descholer;
 	private JLabel descripl;
+	XMLCache cache = new XMLCache();
 
 	public class MapMain {
 		Graphics g;
@@ -431,24 +432,23 @@ public class GUIrough {
 			}
 
 
-			//XMLCache cache = new XMLCache();
-			//ArrayList<Point> temp = cache.getPathIfPossible(fromChoice, toChoice);
-			//if (temp != null) {
-			//	update(temp);
-			//} else {
+			
+			ArrayList<Point> temp = cache.getPathIfPossible(fromChoice, toChoice);
+			if (temp != null) {
+				update(temp);
+			} else {
 				AStar algo = new AStar();
 				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-				System.out.println("Path size: " + path.size());
-				//cache.addPath(fromChoice, toChoice, path);
-				//if (path.size() > 0) {
+				cache.addPath(fromChoice, toChoice, path);
+				if (path.size() > 0) {
 					update(path);
 					DescFileReader dr = new DescFileReader(toChoice.getName());
 					String description = dr.getDescription();
 					descripl.setText(description);
 					descholer.revalidate();
 					descholer.repaint();
-				//}
-			//}
+				}
+			}
 
 		}
 
