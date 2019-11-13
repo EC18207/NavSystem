@@ -1,18 +1,22 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MyPath {
+public class XMLPath implements Serializable {
 	
 	private Point from;
 	private Point to;
 	private ArrayList<Point> path;
 	
-	public MyPath(Point from, Point to, ArrayList<Point> path) {
-		
-		this.from = from;
-		this.to = to;
-		this.path = path;
-		
+	public XMLPath() {
 	}
+	
+//	public MyPath(Point from, Point to, ArrayList<Point> path) {
+//		
+//		this.from = from;
+//		this.to = to;
+//		this.path = path;
+//		
+//	}
 
 	public Point getFrom() {
 		return from;

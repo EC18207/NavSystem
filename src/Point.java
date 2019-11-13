@@ -7,6 +7,9 @@ public class Point extends Point2D.Double {
 	private String name;
 	private HashMap<Point, DoubleVal> attachedPoints = new HashMap<Point, DoubleVal>();
 
+	public Point() {
+	}
+	
 	// Default point constructor for unimportant points
 	public Point(int x, int y) {
 		super(x, y);
