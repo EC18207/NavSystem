@@ -51,6 +51,7 @@ public class GUIrough {
 	JPanel display;
 	JLabel directimage;
 	BufferedImage permanentmap;
+	private JComboBox<String> planchoice;
 
 	public class MapMain {
 		Graphics g;
@@ -192,6 +193,7 @@ public class GUIrough {
 		JLabel singhead = new JLabel("Single Location Planner");
 		JLabel alexhand = new JLabel("Possible Locations");
 		JComboBox<String> planchoice = new JComboBox<String>();
+		this.planchoice = planchoice;
 
 		
 		
@@ -280,6 +282,7 @@ public class GUIrough {
 	}
 
 	public void highlight(ArrayList<Point> todo) {
+		this.planchoice.removeAllItems();
 
 		try {
 			this.mainmap = ImageIO.read(new File("Images\\MapImage.png"));
@@ -294,6 +297,14 @@ public class GUIrough {
 		}
 		ImageIcon newdisplay = new ImageIcon(this.mainmap);
 		this.directimage.setIcon(newdisplay);
+		ArrayList<Point> possiblechoices = todo;
+		possiblechoices.remove(0);
+		String[] choices = new String[possiblechoices.size()];
+		for (int i = 0; i < possiblechoices.size(); i++) {
+			choices[i] = possiblechoices.get(i).getName();
+			this.planchoice.addItem(choices[i]);
+		}
+		
 		this.display.revalidate();
 		this.display.repaint();
 
