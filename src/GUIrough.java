@@ -413,6 +413,8 @@ public class GUIrough {
 				//cache.addPath(fromChoice, toChoice, path);
 				//if (path.size() > 0) {
 					update(path);
+					DescReader dr = new DescReader(toChoice.getName());
+					String description = dr.getDescription();
 				//}
 			//}
 

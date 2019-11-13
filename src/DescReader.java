@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 public class DescReader {
 
+	String loc = null;
+	
 	public DescReader(String loc) {
-		getDescription(loc);
+		this.loc = loc;
 	}
 	
-	public String getDescription(String loc) {
+	public String getDescription() {
 		File textFile = new File("MapBlock\\Descriptions.txt");
 		
 		Scanner s = null;
@@ -28,7 +30,7 @@ public class DescReader {
 			while(i < line.length() && count < 2) {
 				if(line.charAt(i) == ',') {
 					if(count == 0) {
-						if(!substring.equals(loc)) { break; }
+						if(!substring.equals(this.loc)) { break; }
 						substring = substring + " -   ";
 						count++;
 						i++;
