@@ -40,7 +40,7 @@ public class GUIrough {
 	GPS gps = new GPS();
 	JComboBox to;
 	JComboBox from;
-	static double d_c_f = 0.0058823529411764705; //old conversion: 0.007142857142857
+	static double d_c_f = 0.0058823529411764705; // old conversion: 0.007142857142857
 	JLabel dist;
 	JLabel time;
 	double pland;
@@ -99,10 +99,10 @@ public class GUIrough {
 	}
 
 	public GUIrough() {
+		Color okred = new Color(201,4,4);
 		try {
 			this.permanentmap = ImageIO.read(new File("Images\\MapImage.png"));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		this.mainmap = this.permanentmap;
@@ -111,13 +111,15 @@ public class GUIrough {
 		todisplay.setPreferredSize(new Dimension(750, 750));
 
 		this.current = todisplay;
-		
+
 		todisplay.setSize(500, 250);
 		todisplay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		todisplay.getContentPane().setBackground(Color.black);
+		todisplay.getContentPane().setBackground(okred);
 		JPanel imagholder = new JPanel();
+		imagholder.setBackground(Color.BLACK);
 		this.display = imagholder;
 		JLabel image = new JLabel();
+
 		this.directimage = image;
 		ImageIcon map2draw = null;
 		if (this.mainmap == null) {
@@ -126,7 +128,6 @@ public class GUIrough {
 			try {
 				mapfin = ImageIO.read(new File("Images\\MapImage.png"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -141,9 +142,11 @@ public class GUIrough {
 		image.setIcon(map2draw);
 		imagholder.add(image);
 		JPanel buttonholder = new JPanel();
-		JPanel plannerheading = new JPanel();
+		buttonholder.setBackground(okred);
 
-		// Add all important destination points to an array for displaying
+		JPanel plannerheading = new JPanel();
+		plannerheading.setBackground(okred);
+
 		String[] choices = new String[gps.getPoints().size()];
 		for (int i = 0; i < gps.getPoints().size(); i++) {
 			choices[i] = gps.getPoints().get(i).getName();
@@ -162,9 +165,9 @@ public class GUIrough {
 		JButton startlmfao = new JButton("Start individual trip");
 		JButton startbigboi = new JButton("Start Planner");
 		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
-		JLabel dist = new JLabel("todisplaydistance");
+		JLabel dist = new JLabel("N/A");
 		this.dist = dist;
-		JLabel time = new JLabel("todisplaytime");
+		JLabel time = new JLabel("N/A");
 		this.time = time;
 		JLabel desd = new JLabel("Desired Distance(in miles):");
 		JLabel dest = new JLabel("Desired Time(in minutes):");
@@ -179,6 +182,7 @@ public class GUIrough {
 		JLabel nulll5 = new JLabel("");
 		plannerheading.add(header);
 		JPanel xtrabuttons = new JPanel();
+		xtrabuttons.setBackground(okred);
 		xtrabuttons.add(startlmfao);
 		xtrabuttons.add(startbigboi);
 		buttonholder.setLayout(new GridLayout(3, 7));
@@ -219,7 +223,6 @@ public class GUIrough {
 		try {
 			this.mainmap = ImageIO.read(new File("Images\\MapImage.png"));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -246,8 +249,6 @@ public class GUIrough {
 		this.display.revalidate();
 		this.display.repaint();
 
-//		this.GUIroughres();
-
 	}
 
 	public void highlight(ArrayList<Point> todo) {
@@ -255,12 +256,10 @@ public class GUIrough {
 		try {
 			this.mainmap = ImageIO.read(new File("Images\\MapImage.png"));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		this.mainmap = new MapMain(this.mainmap).highpointsstart(todo.get(0));
 
-		
 		for (int i = 1; i < todo.size(); i++) {
 			this.mainmap = new MapMain(this.mainmap).highpoints(todo.get(i));
 
@@ -269,8 +268,6 @@ public class GUIrough {
 		this.directimage.setIcon(newdisplay);
 		this.display.revalidate();
 		this.display.repaint();
-
-//		this.GUIroughres();
 
 	}
 
@@ -296,10 +293,10 @@ public class GUIrough {
 			AStar algo = new AStar();
 			ArrayList<Point> possiblePaths = algo.findAllPossible(gps.getMap().get(startLocation), gps.getPoints(),
 					pland, plant);
-			
-			possiblePaths.add(0,gps.getMap().get(startLocation));
+
+			possiblePaths.add(0, gps.getMap().get(startLocation));
 			highlight(possiblePaths);
-			
+
 		}
 
 	}
@@ -318,7 +315,6 @@ public class GUIrough {
 				try {
 					spoo = ImageIO.read(new File("Images\\ignore.png"));
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				if (spoo != null) {
@@ -332,7 +328,6 @@ public class GUIrough {
 					try {
 						TimeUnit.SECONDS.sleep(1);
 					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					spooky.dispose();
@@ -370,13 +365,13 @@ public class GUIrough {
 
 			XMLCache cache = new XMLCache();
 			ArrayList<Point> temp = cache.getPathIfPossible(fromChoice, toChoice);
-			if(temp != null) {
+			if (temp != null) {
 				update(temp);
 			} else {
 				AStar algo = new AStar();
 				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
 				cache.addPath(fromChoice, toChoice, path);
-				if(path.size() > 0) {
+				if (path.size() > 0) {
 					update(path);
 				}
 			}
