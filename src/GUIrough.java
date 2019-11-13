@@ -58,7 +58,7 @@ public class GUIrough {
 	XMLCache cache = new XMLCache();
 
 	public class MapMain {
-		//This class
+		//This class stores graphics, and acts as the main image class for this project. 
 		Graphics g;
 		Graphics2D g2;
 		BufferedImage tomod;
