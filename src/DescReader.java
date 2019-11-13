@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class DescReader {
 
 	String loc = null;
-	
+	 
 	public DescReader(String loc) {
 		this.loc = loc;
 	}
