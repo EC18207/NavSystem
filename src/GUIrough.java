@@ -53,7 +53,7 @@ public class GUIrough {
 	BufferedImage permanentmap;
 	private JComboBox<String> planchoice;
 	private JPanel descholer;
-	private JLabel description;
+	private JLabel descripl;
 
 	public class MapMain {
 		Graphics g;
@@ -236,15 +236,16 @@ public class GUIrough {
 		buttonholder.add(dt);
 		JPanel descholder = new JPanel();
 		JLabel description = new JLabel("");
-		this.description = description;
+		this.descripl = description;
+		this.descripl.setForeground(Color.WHITE);
 		descholder.add(description);
 		this.descholer = descholder;
 		this.descholer.setBackground(Color.black);
 		
 
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
-		todisplay.add(this.descholer,BorderLayout.EAST);
-		todisplay.add(imagholder, BorderLayout.WEST);
+		todisplay.add(this.descholer,BorderLayout.CENTER);
+		todisplay.add(imagholder, BorderLayout.NORTH);
 
 		startlmfao.addActionListener(new tostartbutton());
 
@@ -423,6 +424,9 @@ public class GUIrough {
 					update(path);
 					DescFileReader dr = new DescFileReader(toChoice.getName());
 					String description = dr.getDescription();
+					descripl.setText(description);
+					descholer.revalidate();
+					descholer.repaint();
 				//}
 			//}
 
