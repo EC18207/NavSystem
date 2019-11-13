@@ -5,10 +5,13 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-
+		XMLCache cache = new XMLCache();
+		cache.clearCache();
+		System.out.println("Started Program.");
+		
 		GUIrough gui = new GUIrough();
 
-		XMLCache cache = new XMLCache();
+		
 
 	}
 
