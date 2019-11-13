@@ -66,22 +66,23 @@ public class GUIrough {
 			this.g = map.getGraphics();
 			this.g2 = (Graphics2D) g;
 		}
-		
+
 		public BufferedImage drawstart(Point in1) {
 			g2.setColor(Color.green);
-			
+
 			g2.fillOval((int) in1.getX() - 4, (int) in1.getY() - 4, 8, 8);
 			return this.tomod;
 
 		}
-		
+
 		public BufferedImage drawstop(Point in1) {
 			g2.setColor(Color.blue);
-			
+
 			g2.fillOval((int) in1.getX() - 4, (int) in1.getY() - 4, 8, 8);
 			return this.tomod;
 
 		}
+
 		public BufferedImage drawpoints(Point in1, Point in2) {
 			g2.setStroke(new BasicStroke(3));
 			g2.setColor(Color.MAGENTA);
@@ -127,7 +128,7 @@ public class GUIrough {
 		this.mainmap = this.permanentmap;
 
 		JFrame todisplay = new JFrame("Navigation System");
-		todisplay.setPreferredSize(new Dimension(750, 750));
+		todisplay.setPreferredSize(new Dimension(1000, 750));
 
 		this.current = todisplay;
 
@@ -163,9 +164,6 @@ public class GUIrough {
 		JPanel buttonholder = new JPanel();
 		buttonholder.setBackground(okred);
 
-//		JPanel plannerheading = new JPanel();
-//		plannerheading.setBackground(okred);
-
 		String[] choices = new String[gps.getPoints().size()];
 		for (int i = 0; i < gps.getPoints().size(); i++) {
 			choices[i] = gps.getPoints().get(i).getName();
@@ -181,7 +179,7 @@ public class GUIrough {
 		this.dd = dd;
 		JTextField dt = new JTextField();
 		this.dt = dt;
-		JButton startlmfao = new JButton("Start Trip");
+		JButton startlmfao = new JButton("Start Trip:");
 		JButton startbigboi = new JButton("Start Planner");
 		JLabel header = new JLabel("Trip Planner");
 		JLabel dist = new JLabel("N/A");
@@ -209,15 +207,9 @@ public class GUIrough {
 		JLabel nulll12 = new JLabel("");
 		JLabel nulll13 = new JLabel("");
 		JLabel singhead = new JLabel("Single Location Planner");
-		JLabel alexhand = new JLabel("Possible Locations");
+		JLabel alexhand = new JLabel("Possible Locations:");
 		JComboBox<String> planchoice = new JComboBox<String>();
 		this.planchoice = planchoice;
-
-//		plannerheading.add(header);
-//		JPanel xtrabuttons = new JPanel();
-
-//		xtrabuttons.add(startlmfao);
-//		xtrabuttons.add(startbigboi);
 
 		buttonholder.setLayout(new GridLayout(0, 6));
 		buttonholder.add(singhead);
@@ -257,10 +249,9 @@ public class GUIrough {
 		descholder.add(description);
 		this.descholer = descholder;
 		this.descholer.setBackground(Color.black);
-		
 
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
-		todisplay.add(this.descholer,BorderLayout.CENTER);
+		todisplay.add(this.descholer, BorderLayout.CENTER);
 		todisplay.add(imagholder, BorderLayout.NORTH);
 
 		startlmfao.addActionListener(new tostartbutton());
@@ -285,9 +276,8 @@ public class GUIrough {
 
 		}
 		this.mainmap = new MapMain(this.mainmap).drawstart(todo.get(0));
-		this.mainmap = new MapMain(this.mainmap).drawstop(todo.get(todo.size()-1));
+		this.mainmap = new MapMain(this.mainmap).drawstop(todo.get(todo.size() - 1));
 
-		
 		double tocon = (todo.size() * d_c_f);
 		double conv = 4.656;
 		double tocont = (tocon * conv);
@@ -363,7 +353,6 @@ public class GUIrough {
 
 			possiblePaths.add(0, gps.getMap().get(startLocation));
 			highlight(possiblePaths);
-			
 
 		}
 
@@ -431,8 +420,6 @@ public class GUIrough {
 				return;
 			}
 
-
-			
 			ArrayList<Point> temp = cache.getPathIfPossible(fromChoice, toChoice);
 			if (temp != null) {
 				update(temp);
