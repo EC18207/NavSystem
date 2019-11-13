@@ -441,14 +441,14 @@ public class GUIrough {
 				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
 				if (path.size() > 0) {
 					update(path);
-					DescFileReader dr = new DescFileReader(toChoice.getName());
-					String description = dr.getDescription();
-					descripl.setText(description);
-					descholer.revalidate();
-					descholer.repaint();
 					cache.addPath(fromChoice, toChoice, path);
 				}
 			}
+			DescFileReader dr = new DescFileReader(toChoice.getName());
+			String description = dr.getDescription();
+			descripl.setText(description);
+			descholer.revalidate();
+			descholer.repaint();
 
 		}
 
