@@ -2,11 +2,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class DescReader {
+public class DescFileReader {
 
 	String loc = null;
 	 
-	public DescReader(String loc) {
+	public DescFileReader(String loc) {
 		this.loc = loc;
 	}
 	
