@@ -144,8 +144,8 @@ public class GUIrough {
 		JPanel buttonholder = new JPanel();
 		buttonholder.setBackground(okred);
 
-		JPanel plannerheading = new JPanel();
-		plannerheading.setBackground(okred);
+//		JPanel plannerheading = new JPanel();
+//		plannerheading.setBackground(okred);
 
 		String[] choices = new String[gps.getPoints().size()];
 		for (int i = 0; i < gps.getPoints().size(); i++) {
@@ -164,7 +164,7 @@ public class GUIrough {
 		this.dt = dt;
 		JButton startlmfao = new JButton("Start individual trip");
 		JButton startbigboi = new JButton("Start Planner");
-		JLabel header = new JLabel("PLAN YOUR TRIP HERE");
+		JLabel header = new JLabel("Trip Planner");
 		JLabel dist = new JLabel("N/A");
 		this.dist = dist;
 		JLabel time = new JLabel("N/A");
@@ -175,23 +175,51 @@ public class GUIrough {
 		JLabel tim = new JLabel("Time(in minutes):");
 		JLabel tol = new JLabel("To:");
 		JLabel froml = new JLabel("From:");
-		JLabel nulll1 = new JLabel("Start Location");
+		JLabel startlab = new JLabel("Start Location");
+		JLabel nulll1 = new JLabel("");
 		JLabel nulll2 = new JLabel("");
 		JLabel nulll3 = new JLabel("");
 		JLabel nulll4 = new JLabel("");
 		JLabel nulll5 = new JLabel("");
-		plannerheading.add(header);
-		JPanel xtrabuttons = new JPanel();
-		xtrabuttons.setBackground(okred);
-		xtrabuttons.add(startlmfao);
-		xtrabuttons.add(startbigboi);
-		buttonholder.setLayout(new GridLayout(3, 7));
+		JLabel nulll6 = new JLabel("");
+		JLabel nulll7 = new JLabel("");
+		JLabel nulll8 = new JLabel("");
+		JLabel nulll9 = new JLabel("");
+		JLabel nulll10 = new JLabel("");
+		JLabel nulll11 = new JLabel("");
+		JLabel nulll12 = new JLabel("");
+		JLabel nulll13 = new JLabel("");
+		JLabel singhead = new JLabel("Single Location Planner");
+		JLabel alexhand = new JLabel("Possible Locations");
+		JComboBox<String> planchoice = new JComboBox<String>();
+
+		
+		
+//		plannerheading.add(header);
+//		JPanel xtrabuttons = new JPanel();
+		
+//		xtrabuttons.add(startlmfao);
+//		xtrabuttons.add(startbigboi);
+		
+		buttonholder.setLayout(new GridLayout(0,6));
+		buttonholder.add(singhead);
+		buttonholder.add(nulll7);
+		buttonholder.add(nulll8);
+		buttonholder.add(nulll13);
+		buttonholder.add(header);
+		buttonholder.add(startbigboi);
+		buttonholder.add(startlmfao);
+		buttonholder.add(nulll10);
+		buttonholder.add(nulll11);
+		buttonholder.add(nulll12);
+		buttonholder.add(startlab);
+		buttonholder.add(planstart);
 		buttonholder.add(tol);
 		buttonholder.add(to);
 		buttonholder.add(dis);
 		buttonholder.add(dist);
-		buttonholder.add(nulll1);
-		buttonholder.add(planstart);
+		buttonholder.add(alexhand);
+		buttonholder.add(planchoice);
 		buttonholder.add(nulll2);
 		buttonholder.add(nulll3);
 		buttonholder.add(nulll4);
@@ -204,10 +232,29 @@ public class GUIrough {
 		buttonholder.add(time);
 		buttonholder.add(dest);
 		buttonholder.add(dt);
-		todisplay.add(plannerheading, BorderLayout.EAST);
-		todisplay.add(xtrabuttons, BorderLayout.WEST);
+
+//		buttonholder.add(tol);
+//		buttonholder.add(to);
+//		buttonholder.add(dis);
+//		buttonholder.add(dist);
+//		buttonholder.add(nulll1);
+//		buttonholder.add(planstart);
+//		buttonholder.add(nulll2);
+//		buttonholder.add(nulll3);
+//		buttonholder.add(nulll4);
+//		buttonholder.add(nulll5);
+//		buttonholder.add(desd);
+//		buttonholder.add(dd);
+//		buttonholder.add(froml);
+//		buttonholder.add(from);
+//		buttonholder.add(tim);
+//		buttonholder.add(time);
+//		buttonholder.add(dest);
+//		buttonholder.add(dt);
+//		todisplay.add(plannerheading, BorderLayout.EAST);
+//		todisplay.add(xtrabuttons, BorderLayout.WEST);
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
-		todisplay.add(imagholder, BorderLayout.NORTH);
+		todisplay.add(imagholder, BorderLayout.CENTER);
 
 		startlmfao.addActionListener(new tostartbutton());
 
