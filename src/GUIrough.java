@@ -162,7 +162,7 @@ public class GUIrough {
 		this.dd = dd;
 		JTextField dt = new JTextField();
 		this.dt = dt;
-		JButton startlmfao = new JButton("Start individual trip");
+		JButton startlmfao = new JButton("Start Trip");
 		JButton startbigboi = new JButton("Start Planner");
 		JLabel header = new JLabel("Trip Planner");
 		JLabel dist = new JLabel("N/A");
@@ -233,26 +233,7 @@ public class GUIrough {
 		buttonholder.add(dest);
 		buttonholder.add(dt);
 
-//		buttonholder.add(tol);
-//		buttonholder.add(to);
-//		buttonholder.add(dis);
-//		buttonholder.add(dist);
-//		buttonholder.add(nulll1);
-//		buttonholder.add(planstart);
-//		buttonholder.add(nulll2);
-//		buttonholder.add(nulll3);
-//		buttonholder.add(nulll4);
-//		buttonholder.add(nulll5);
-//		buttonholder.add(desd);
-//		buttonholder.add(dd);
-//		buttonholder.add(froml);
-//		buttonholder.add(from);
-//		buttonholder.add(tim);
-//		buttonholder.add(time);
-//		buttonholder.add(dest);
-//		buttonholder.add(dt);
-//		todisplay.add(plannerheading, BorderLayout.EAST);
-//		todisplay.add(xtrabuttons, BorderLayout.WEST);
+
 		todisplay.add(buttonholder, BorderLayout.SOUTH);
 		todisplay.add(imagholder, BorderLayout.CENTER);
 
@@ -417,7 +398,6 @@ public class GUIrough {
 			//} else {
 				AStar algo = new AStar();
 				ArrayList<Point> path = algo.findShortestPath(fromChoice, toChoice);
-				System.out.println("Path size: " + path.size());
 				//cache.addPath(fromChoice, toChoice, path);
 				//if (path.size() > 0) {
 					update(path);
