@@ -439,9 +439,7 @@ public class GUI {
 			int y = (int) (toChoice.getY()-fromChoice.getY());
 			
 			int straightLineDistance = (int) Math.sqrt((x*x)+(y*y));
-			System.out.println("Straight Line Distance: " + straightLineDistance);
 			ArrayList<Point> temp = null;
-			
 			if(straightLineDistance >= 350) {
 				temp = cache.getPathIfPossible(fromChoice, toChoice);
 			}
