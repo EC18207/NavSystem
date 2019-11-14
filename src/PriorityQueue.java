@@ -3,6 +3,7 @@ import java.lang.reflect.Array;
 import java.util.AbstractQueue;
 import java.util.ArrayList;
 import java.util.Iterator;
+/* Priority Queue class creates a minimum queue used for A* algorithm and mapping*/
 
 public class PriorityQueue extends ArrayList<Node> implements Serializable {
 	

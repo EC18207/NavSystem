@@ -33,7 +33,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class GUI {
+public class GUIrough {
 	//This stores the elements of the GUI that need to be edited and refreshed
 	BufferedImage mainmap = null;
 	boolean hasstarted = false;
@@ -70,7 +70,6 @@ public class GUI {
 		}
 
 		public BufferedImage drawstart(Point in1) {
-			//This method draws a green starting circle on the map and returns the modified image
 			g2.setColor(Color.green);
 
 			g2.fillOval((int) in1.getX() - 4, (int) in1.getY() - 4, 8, 8);
@@ -79,7 +78,6 @@ public class GUI {
 		}
 
 		public BufferedImage drawstop(Point in1) {
-			//This method draws a blue ending circle on the map and returns the modified image
 			g2.setColor(Color.blue);
 
 			g2.fillOval((int) in1.getX() - 4, (int) in1.getY() - 4, 8, 8);
@@ -88,18 +86,16 @@ public class GUI {
 		}
 
 		public BufferedImage drawpoints(Point in1, Point in2) {
-			//This method draws a line on the map and returns the modified image
-
 			g2.setStroke(new BasicStroke(3));
 			g2.setColor(Color.MAGENTA);
 			g2.drawLine((int) in1.getX(), (int) in1.getY(), (int) in2.getX(), (int) in2.getY());
+//			g2.fillOval((int)in1.x, (int)in1.y, 3, 3);
 
 			return this.tomod;
 
 		}
 
 		public BufferedImage highpoints(Point in1) {
-			//This method highlights major points from our triplanner and returns the modified image
 			g2.setStroke(new BasicStroke(2));
 			g2.setColor(Color.CYAN);
 			g2.fillOval((int) in1.getX() - 4, (int) in1.getY() - 4, 8, 8);
@@ -109,7 +105,6 @@ public class GUI {
 		}
 
 		public BufferedImage highpointsstart(Point in1) {
-			//This method draws a circle on the starting point of our trip planner and returns the modified image.
 			g2.setStroke(new BasicStroke(2));
 			g2.setColor(Color.magenta);
 			g2.fillOval((int) in1.getX() - 4, (int) in1.getY() - 4, 8, 8);
@@ -118,15 +113,14 @@ public class GUI {
 
 		}
 	}
-//This method just rounds to two decimal places
+
 	private static double round2(double value) {
 		BigDecimal toround = new BigDecimal(String.valueOf(value));
 		toround = toround.setScale(2, RoundingMode.HALF_UP);
 		return toround.doubleValue();
 	}
 
-	public GUI() {
-		//This constructor reads images, and sets everything up on the GUI
+	public GUIrough() {
 		Color okred = new Color(201, 4, 4);
 		try {
 			this.permanentmap = ImageIO.read(new File("Images\\MapImage.png"));
@@ -273,8 +267,6 @@ public class GUI {
 	}
 
 	public void update(ArrayList<Point> todo) {
-		//This update takes in an arraylist of points and draws a single destination to-from line on our map based on the arraylist of points. It also calculates distance and time
-		//from these points, and updates applicable jlabels, jframes, jpanels, etc.
 		try {
 			this.mainmap = ImageIO.read(new File("Images\\MapImage.png"));
 		} catch (IOException e1) {
@@ -310,7 +302,6 @@ public class GUI {
 	}
 
 	public void highlight(ArrayList<Point> todo) {
-		//This method highlights all places we can go to in the trip planner, and updates all relevant gui elements.
 		this.planchoice.removeAllItems();
 
 		try {
@@ -340,8 +331,6 @@ public class GUI {
 	}
 
 	public class planbutton implements ActionListener {
-		//This is the actionlistener for our trip planner, which calls relevant highlight methods.
-		//it also calls the astar algorithm to work
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -360,7 +349,6 @@ public class GUI {
 
 			String startLocation = (String) startloc.getSelectedItem();
 
-			
 			ArrayList<Point> possiblePaths = gps.findAllPossible(gps.getMap().get(startLocation), gps.getPoints(),
 					pland, plant);
 
@@ -372,8 +360,6 @@ public class GUI {
 	}
 
 	public class tostartbutton implements ActionListener {
-		//This method is an actionlistener for our single-trip start button, and it calls relevant methods to update the GUI
-		//It also calls the Astar algorithm to work
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -439,14 +425,12 @@ public class GUI {
 			if (temp != null) {
 				update(temp);
 			} else {
-				
 				ArrayList<Point> path = gps.findShortestPath(fromChoice, toChoice);
 				if (path.size() > 0) {
 					update(path);
 					cache.addPath(fromChoice, toChoice, path);
 				}
 			}
-			
 			String description = gps.getDescription(toChoice.getName());
 			descripl.setText(description);
 			descholer.revalidate();
