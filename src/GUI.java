@@ -442,7 +442,7 @@ public class GUI {
 			System.out.println("Straight Line Distance: " + straightLineDistance);
 			ArrayList<Point> temp = null;
 			
-			if(straightLineDistance >= 500) {
+			if(straightLineDistance >= 350) {
 				temp = cache.getPathIfPossible(fromChoice, toChoice);
 			}
 			
