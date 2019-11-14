@@ -435,15 +435,25 @@ public class GUI {
 				return;
 			}
 
-			ArrayList<Point> temp = cache.getPathIfPossible(fromChoice, toChoice);
+			int x = (int) (toChoice.getX()-fromChoice.getX());
+			int y = (int) (toChoice.getY()-fromChoice.getY());
+			
+			int straightLineDistance = (int) Math.sqrt((x*x)+(y*y));
+			ArrayList<Point> temp = null;
+			
+			if(straightLineDistance >= 500) {
+				temp = cache.getPathIfPossible(fromChoice, toChoice);
+			}
+			
 			if (temp != null) {
 				update(temp);
 			} else {
-				
 				ArrayList<Point> path = gps.findShortestPath(fromChoice, toChoice);
 				if (path.size() > 0) {
 					update(path);
-					cache.addPath(fromChoice, toChoice, path);
+					if(path.size() >= 500) {
+						cache.addPath(fromChoice, toChoice, path);
+					}
 				}
 			}
 			
