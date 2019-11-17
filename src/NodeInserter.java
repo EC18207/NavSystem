@@ -17,6 +17,7 @@ public class NodeInserter {
 
 	String fileDirectory = "MapBlock\\Coordinates.txt";
 
+	//Set ups the map image, and starts the node insertion
 	public NodeInserter() {
 		File f = new File(imageDirectory);
 		try {
@@ -29,6 +30,7 @@ public class NodeInserter {
 		}
 	}
 
+	//Begins the map filling by starting files
 	public void completeMap() {
 		FileReader r = new FileReader();
 
@@ -42,6 +44,7 @@ public class NodeInserter {
 
 	}
 
+	//Runs the three important methods in order
 	public void insertNodes(ArrayList<Point> points) {
 
 		fillMap();
@@ -52,6 +55,7 @@ public class NodeInserter {
 
 	}
 
+	//Places the important points by replacing the nodes in the hashmap that have the corresponding x and y value
 	public void placeImportantPoints(ArrayList<Point> points) {
 		for (int i = 0; i < points.size(); i++) {
 			Point temp = points.get(0);
@@ -73,6 +77,7 @@ public class NodeInserter {
 		}
 	}
 
+	//Iterates through the hashmap and connects adjacent nodes
 	public void connectMap() {
 		int x = 0;
 		int y = 0;
@@ -135,6 +140,7 @@ public class NodeInserter {
 		}
 	}
 
+	//Iterates through the map and calculates the pixel colors and inserts nodes if finds black
 	public void fillMap() {
 
 		int x = 0;
@@ -174,6 +180,7 @@ public class NodeInserter {
 
 
 
+	//Reads the points
 public class FileReader {
 
 	ArrayList<Point> points;

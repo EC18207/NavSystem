@@ -24,7 +24,9 @@ public class GPS {
 		return points;
 	}
 
+	//A* Algorithm, which uses a min-heap priority queue.
 	public ArrayList<Point> findShortestPath(Point from, Point to) {
+		//Setup
 		ArrayList<String> open = new ArrayList<String>();
 		ArrayList<String> closed = new ArrayList<String>();
 
@@ -41,7 +43,8 @@ public class GPS {
 		q.add(startNode);
 
 		boolean flag = false;
-
+		
+		//Main A* Loop
 		while (true) {
 			if (flag == true) {
 				if ((q.peek() == null) || (q.peek().f >= values.get(to.getName()).f)) {
@@ -87,6 +90,8 @@ public class GPS {
 
 		}
 
+		
+		//Populate ArrayList in traveling order and return
 		Point location = values.get(to.getName()).point;
 
 		while (location != null) {
@@ -98,6 +103,8 @@ public class GPS {
 
 	}
 
+	
+	//Uses the A* algorithm to find shortest route and see if that route is within the restrictions
 	public ArrayList<Point> findAllPossible(Point from, ArrayList<Point> destinations, double distance, double time) {
 		ArrayList<Point> possiblePaths = new ArrayList<Point>();
 
@@ -156,6 +163,7 @@ public class GPS {
 
 	}
 
+	//Gets descriptions from the text document and returns the string
 	public String getDescription(String loc) {
 		File textFile = new File("MapBlock\\Descriptions.txt");
 
@@ -195,7 +203,7 @@ public class GPS {
 	}
 
 
-
+//Min-Heap priority queue that organizes node
 public class PriorityQueue extends ArrayList<Node> implements Serializable {
 
 	private void shiftup(int index) {
